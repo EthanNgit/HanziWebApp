@@ -1,0 +1,119 @@
+@font-face 
+{
+    font-family: 'Roboto';
+    font-weight: 400;
+    src: url('../assets/fonts/Roboto/Roboto-Regular.ttf');
+}
+@font-face 
+{
+    font-family: 'Roboto';
+    font-weight: 500;
+    src: url('../assets/fonts/Roboto/Roboto-Medium.ttf');
+}
+@font-face 
+{
+    font-family: 'Roboto';
+    font-weight: 700;
+    src: url('../assets/fonts/Roboto/Roboto-Bold.ttf');
+}
+@font-face 
+{
+    font-family: 'Roboto';
+    font-weight: 900;
+    src: url('../assets/fonts/Roboto/Roboto-Black.ttf');
+}
+
+@font-face 
+{
+    font-family: 'Noto';
+    src: url('../assets/fonts/Noto/NotoSansSC-VariableFont_wght.ttf');
+}
+
+@font-face 
+{
+    font-family: 'Montserrat';
+    font-weight: 400;
+    src: url('../assets/fonts/Montserrat/Montserrat-Regular.ttf');
+}
+@font-face 
+{
+    font-family: 'Montserrat';
+    font-weight: 500;
+    src: url('../assets/fonts/Montserrat/Montserrat-Medium.ttf');
+}
+@font-face 
+{
+    font-family: 'Montserrat';
+    font-weight: 600;
+    src: url('../assets/fonts/Montserrat/Montserrat-SemiBold.ttf');
+}
+@font-face 
+{
+    font-family: 'Montserrat';
+    font-weight: 700;
+    src: url('../assets/fonts/Montserrat/Montserrat-Bold.ttf');
+}
+@font-face 
+{
+    font-family: 'Montserrat';
+    font-weight: 800;
+    src: url('../assets/fonts/Montserrat/Montserrat-ExtraBold.ttf');
+}
+@font-face 
+{
+    font-family: 'Montserrat';
+    font-weight: 900;
+    src: url('../assets/fonts/Montserrat/Montserrat-Black.ttf');
+}
+
+@font-face {
+    font-family: 'Caligraphy';
+    src: url(../assets/fonts/Caligraphy/caligraphy.ttf);
+}
+
+:root 
+{
+    --gray-full: #171717;
+    --gray-med: #202020;
+    --gray-min: #2e2e2e;
+    --white-full: #f0f0f0;
+    --white-med: #f2f3f499;
+    --white-min: #f2f3f461;
+    --brand-two: #FFA726;
+    --brand-one: #ff5000;
+    --confirmation-green: #4CAF50;
+    --error-red: #D32F2F;
+    --hyper-link: #0077B6;
+}
+
+.highlight {
+    animation: highlightBorder 2s 1 linear;
+  }
+  
+  @keyframes highlightBorder {
+     0% {
+        border-color: currentColor;
+
+      }
+      50% {
+        border-color: white;
+
+      }
+      100% {
+        border-color: currentColor;
+
+      }
+  }
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: var(--white-full);
+    border-radius: 6px;
+}
+  
+::-webkit-scrollbar-track {
+    background-color: var(--gray-full);
+}

@@ -1,0 +1,127 @@
+@import url(../../global/variables.css);
+
+body {
+    background-color: var(--gray-full);
+    color: var(--white-full);
+}
+
+.home-page-contents {
+    background-image: url(../../assets/images/bg_circles.svg);
+    background-color: var(--gray-full);
+    background-blend-mode: multiply;
+    background-size: 100%;
+    min-height: 100vh;
+    padding-left: 10%;
+    padding-right: 10%;
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row;
+}
+
+.home-page-call-to-action {
+    font-family: 'Roboto';
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.home-page-call-to-action-one {
+    margin-top: 40vh;
+}
+
+.home-page-sign-up-btn {
+    align-items: center;
+    background-color: var(--brand-one);
+    border: 0;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: var(--white-full);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 24px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 700px;
+    min-height: 60px;
+    min-width: 0px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 40px;
+    padding-right: 40px;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+  }
+
+.home-page-sign-up-btn:hover {
+    background-color: var(--brand-two);
+    transition: background-color 0.3s;
+}
+
+.home-page-row-one {
+    flex-basis: 55%;
+}
+
+.home-page-row-two {
+    flex-basis: 25%;
+    margin-top: 20vh;
+}
+
+.home-page-hangul-list {
+    font-family: 'caligraphy';
+    width: 300px;
+    list-style: none;
+    margin: 0;
+    font-size: 150px;
+}
+
+@media (max-width: 768px) {
+    .home-page-contents {
+        min-height: 100vh;
+        background-size: 200%;
+    }
+    .home-page-call-to-action {
+        font-size: 35px;
+    }
+    .home-page-call-to-action-one {
+        margin-top: 20vh;
+    }
+    .home-page-sign-up-btn {
+        font-size: 20px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .home-page-row-one {
+        flex-basis: 100%;
+
+    }
+    .home-page-row-two {
+        display: none;
+        flex-basis: 100%;
+    }
+}
+  
+@media (max-width: 480px) {
+    .home-page-hangul-list {
+        font-size: 100px;
+    }
+    .home-page-hangul-list-item-one {
+        margin-bottom: -10%;
+    }
+    
+    .home-page-hangul-list-item-two {
+        margin-bottom: -10%;
+    }
+}
+
+@media (max-width: 380px) {
+    .home-page-contents {
+        background-size: 250%;
+    }
+    .home-page-hangul-list {
+        font-size: 75px;
+    }
+}
