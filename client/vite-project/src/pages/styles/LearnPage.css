@@ -1,0 +1,344 @@
+@import url(../../global/variables.css);
+
+.learn-page {
+    background-image: url(../../assets/images/bg_circles.svg);
+    background-color: var(--gray-full);
+    background-blend-mode: multiply;
+    background-attachment: fixed;
+    background-size: 120%;
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    font-family: 'Roboto';
+}
+
+.two-left-one-right-flex {
+    width: 60%;
+    height: 70vh;
+
+    margin: 0px 20%;
+    margin-top: 14vh;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.tlor-left {
+    height: 100%;
+
+    flex: 0 0 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.tlor-right {
+    height: 100%;
+
+    flex: 0 0 68%
+}
+
+.tlor-left-box {
+    background-color: var(--gray-med);
+    outline: 2px solid var(--white-med);
+    border-radius: 6px;
+
+    width: 100%;
+    height: 50%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-basis: 48%;
+}
+
+.tlor-left-box h4 {
+    color: var(--white-med);
+
+    margin: 2vh 10%;
+    margin-bottom: 0%;
+
+    align-self: flex-start;
+
+    font-size: 18px;
+    font-weight: 500;
+}  
+
+.tlor-left-box h3 {
+    margin: 1vh 10%;
+    margin-bottom: 0%;
+
+    align-self: flex-start;
+
+    font-size: 22px;
+}  
+
+.tlor-left-box p {
+    color: var(--white-med);
+
+    margin: 2vh 10%;
+    width: 80%;
+
+    align-self: flex-start;
+
+    font-size: 20px;
+}
+
+.tlor-right-box {
+    background-color: var(--gray-med);
+    outline: 2px solid var(--white-med);
+    border-radius: 6px;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tlor-right-box h4 {
+    color: var(--white-med);
+
+    margin: 2vh 5%;
+    margin-bottom: 0%;
+
+    align-self: flex-start;
+
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.tlor-right-box h3 {
+    margin: 1vh 5%;
+    margin-bottom: 0%;
+
+    align-self: flex-start;
+
+    font-size: 22px;
+}
+
+.button-18 {
+    margin-top: auto;
+    margin-bottom: 10%;
+    align-items: center;
+    background-color: var(--brand-one);
+    border: 0;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: var(--white-full);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 16px;
+    font-weight: 800;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 480px;
+    min-height: 40px;
+    min-width: 0px;
+    height: 10%;
+    width: 80%;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+}
+
+.button-18:hover { 
+    background-color: var(--brand-two);
+}
+
+.button-18:disabled { 
+    background: rgba(0, 0, 0, .08);
+    color: rgba(0, 0, 0, .3);
+
+    cursor: not-allowed;
+}
+
+
+.course-grid-wrapper {
+    background-color: var(--gray-full); 
+    border-radius: 6px;
+
+    height: 100%;
+    width: 100%; 
+
+    margin-top: 20px;
+
+    display: flex;
+    align-items: flex-start;
+
+    overflow-y: auto;
+}
+  
+.course-grid-container {
+    width: 100%;
+    margin: 5% 5%;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+.course-grid-container::after {
+    content: '';
+
+    min-width: calc(33.333% - 16px); 
+
+    flex: auto;
+}
+
+.course-grid-item {
+    border: 1px solid var(--gray-min);
+    background-color: var(--gray-med);
+    color: var(--white-full);
+    border-radius: 6px;
+
+    width: calc(33.333% - 16px);
+    min-height: 100px; 
+
+    margin-bottom: 20px;
+    padding: 16px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    text-align: left;
+    font-size: 18px;
+    font-family: 'Noto';
+
+    cursor:default;
+  }
+
+.prerequisites-completed {
+    border: 1px solid var(--white-med);
+}
+
+.prerequisites-completed:hover {
+    border-color: var(--brand-one);
+
+    cursor: pointer;
+  }
+
+.course-grid-item-h3 {
+    width: 100%;
+}
+
+.course-grid-item h4 {
+    margin: 0vh 5%;
+
+    z-index: 2;
+
+    font-size: 12px;
+}
+
+.course-grid-item h3 {
+  margin: 0vh 5%;
+
+  width: 90%;
+
+  font-size: 14px;
+
+  z-index: 2;
+}
+
+.locked-color {
+    color: var(--white-med);
+
+    padding: 0;
+}
+
+.unlocked-color {
+    color: var(--white-full);
+
+    padding: 0;
+}
+
+/*1450 - fix tlor tl*/
+/*1300 - fix tlor tr grid item font size*/
+/*1050 - fit for mobile divs*/
+/*950 - remove icons*/
+  
+@media (max-width: 1450px) {
+    .tlor-left-box h3 {    
+        font-size: 16px;
+    }  
+    
+    .tlor-left-box p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .course-grid-item h4 {
+        font-size: 8px;
+    }
+    
+    .course-grid-item h3 { 
+      font-size: 10px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .two-left-one-right-flex {
+        margin: 10vh 10%;
+        width: 100%;
+    }
+    .tlor-left {
+        height: auto;
+        flex-basis: 100%;
+    }
+    .tlor-left-box {
+        margin-bottom: 4%;
+    }
+    .tlor-right {
+        flex-basis: 100%;
+        height: auto;
+        padding-bottom: 10%;
+    }
+    .button-18 {
+        margin-bottom: 5%;
+    }
+    .course-grid-item h4 {
+        font-size: 12px;
+    }
+    
+    .course-grid-item h3 { 
+      font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) { 
+    .two-left-one-right-flex {
+        margin: 7vh 1%;
+        width: 100%;
+    }
+    .tlor-right-box {
+        height: auto;
+    }
+    .course-grid-item {
+        width: 100%;
+    }
+}

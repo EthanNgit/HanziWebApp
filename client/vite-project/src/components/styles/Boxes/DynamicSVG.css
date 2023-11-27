@@ -1,0 +1,18 @@
+@import url(../../../global/variables.css);
+
+.parent-container {
+    position: relative; /* Add this line to ensure the parent has a specified position */
+  }
+  
+  .svg-container {
+    position: absolute; /* Change from fixed to absolute */
+    top: 0;
+    right: 0;
+    margin: 10px; /* Adjust as needed */
+  }
+  
+  .svg-image {
+    width: 32px; /* Adjust as needed */
+    height: 32px; /* Adjust as needed */
+    color: var(--brand-one);
+  }

@@ -12,6 +12,7 @@ import { AuthContext } from './helpers/AuthContext';
 import axios from 'axios';
 import PageNotFound from './pages/pages/PageNotFound';
 import Hanzi from './pages/pages/HanziPage';
+import Learn from './pages/pages/LearnPage';
 
 function App() {
   const [authState, setAuthState] = useState({
@@ -31,10 +32,8 @@ function App() {
             email: response.data.email, 
             id: response.data.id, 
             status: true});
-
-            axios.get('http://localhost:3001/api/stats').then((response) => {
-              console.log(response.data.streak)
-            })
+            
+            //Update streak
         }
     });
     
@@ -52,6 +51,7 @@ function App() {
           <Route path="/dashboard" element = {<Dashboard />}/>
           <Route path="/search" element = {<Search />}/>
           <Route path="/hanzi/:char" element = {<Hanzi />}/>
+          <Route path="/learn" element = {<Learn />}/>
           <Route path="/*" element = {<PageNotFound/>}/>
         </Routes>
     </BrowserRouter>

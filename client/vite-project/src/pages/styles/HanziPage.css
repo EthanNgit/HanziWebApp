@@ -86,7 +86,7 @@
 
 .hanzi-dictionary-about-flex-1 span {
     margin-left: 10px;
-    color: var(--brand-two);
+    color: var(--brand-one);
 }
 
 .hanzi-dictionary-about-flex-2 {
@@ -108,7 +108,7 @@
 }
 
 .hanzi-writer-container span {
-    color: var(--brand-two);
+    color: var(--brand-one);
 }
 
 .hanzi-dictionary-about h1 {
@@ -136,7 +136,7 @@
 }
 
 .sentence-highlight-word {
-    color: var(--brand-two);
+    color: var(--brand-one);
 }
 
 .sentence-item {

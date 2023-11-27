@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVolumeHigh } from '@fortawesome/free-solid-svg-icons/faVolumeHigh';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons/faChevronRight';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft';
-import HanziWriterComponent from '../../components/styles/Boxes/HanziWriterComponent';
+import HanziWriterComponent from '../../components/components/Boxes/HanziWriterComponent';
 
 
 interface HanziWriterProps {

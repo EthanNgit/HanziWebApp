@@ -24,7 +24,6 @@ const HanziWriterComponent: React.FC<HanziWriterComponentProps> = ({ character }
       });
 
       writerInstanceRef.current = writer;
-      // Optionally, you can call other methods or set up event listeners
     } else {
       writerInstanceRef.current.setCharacter(character);
     }

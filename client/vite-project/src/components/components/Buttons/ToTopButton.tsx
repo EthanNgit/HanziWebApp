@@ -31,8 +31,8 @@ const ToTopButton = () => {
       className={`scroll-to-top-button ${isVisible ? 'visible' : ''}`}
       onClick={scrollToTop}
       style={{
-        width: '50px', // Adjust the width to your preference
-        height: '50px', // Ensure height is the same as width for a perfect circle
+        width: '50px', 
+        height: '50px', 
         borderRadius: '50%',
         position: 'fixed',
         bottom: '20px',
@@ -46,6 +46,7 @@ const ToTopButton = () => {
         cursor: 'pointer',
         opacity: isVisible ? 1 : 0,
         transition: 'opacity 0.3s ease-in-out',
+        zIndex: 999
       }}
     >
       <FontAwesomeIcon icon={faArrowUp} />

@@ -79,8 +79,8 @@
     --white-full: #f0f0f0;
     --white-med: #f2f3f499;
     --white-min: #f2f3f461;
-    --brand-two: #FFA726;
-    --brand-one: #ff5000;
+    --brand-one: #DE2910;
+    --brand-two: #b52200;
     --confirmation-green: #4CAF50;
     --error-red: #D32F2F;
     --hyper-link: #0077B6;
@@ -116,4 +116,8 @@
   
 ::-webkit-scrollbar-track {
     background-color: var(--gray-full);
+}
+
+::selection {
+    background: var(--brand-one);
 }
