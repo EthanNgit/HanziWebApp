@@ -1,6 +1,6 @@
 # Hanzi Learning Web App
 Full Stack React Web Application for Teaching Hanzi.
-> Current version: V: 0.1 Base Update and dictionary api (personal)...
+> Current version: V: 0.1.1 Learn Page ui
 
 ## About
 This Application was for me to study hanzi more as well as provide a way for people to learn easier than I did. It has a personal database that can be used as an api as a dictionary that includes all sorts of metrics such as simplified and traditional hanzi, the stroke counts for each, the definition, the pinyin, hsk level, and category the word falls under. There is a learn section to go over new vocabulary over time using SRS method (spaced repetition). Then You can review previous vocabulary through multiple trials. You can quiz stroke order, definitions, sounds, etc. The apps dictionary is full and has example usages for every entree, all of this makes this Hanzi web app unique and powerful.
@@ -33,6 +33,7 @@ This Application was for me to study hanzi more as well as provide a way for peo
  </details>
  <details><summary>V1</summary>
   <ul>
+    <li> V: 0.1 Base Update and dictionary api (personal)...</li>
   </ul>
  </details>
 </details>
