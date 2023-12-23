@@ -285,17 +285,19 @@
     .tlor-left-box h3 {    
         font-size: 16px;
     }  
-    
     .tlor-left-box p {
         font-size: 14px;
     }
 }
 
 @media (max-width: 1300px) {
+    .two-left-one-right-flex {
+        margin: 10vh 15%;
+        width: 100%;
+    }
     .course-grid-item h4 {
         font-size: 8px;
     }
-    
     .course-grid-item h3 { 
       font-size: 10px;
     }

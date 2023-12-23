@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
 import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
 import axios from 'axios';
+import { EN_UC_I_AGREE_END, EN_UC_I_AGREE_START, EN_UC_LOGIN_HEADER, EN_UC_REGISTER_HEADER, EN_UC_YES_ACCOUNT } from '../../global/Ts/Strings';
 
 
 const RegisterPage = () => {
@@ -13,7 +14,7 @@ const RegisterPage = () => {
     <div className='register-page-contents'>
       <div className='register-page-wrapper'>
         <form action='' noValidate onSubmit={handleSubmit}>
-          <h1 className='register-page-h1'>Register</h1>
+          <h1 className='register-page-h1'>{EN_UC_REGISTER_HEADER}</h1>
           <div className="register-page-input-box">
             <input type='email' name='email' placeholder='Email' required/>
             <FontAwesomeIcon icon={faUser} className='register-page-icon'/>
@@ -24,13 +25,13 @@ const RegisterPage = () => {
           </div>
 
           <div className='register-page-terms-of-service'>
-            <label><input type='checkbox' name='acceptTOS'/> I agree to the <Link to="/tos" className='register-page-link'>Terms of Service</Link></label>
+            <label><input type='checkbox' name='acceptTOS'/>{EN_UC_I_AGREE_START} <Link to="/tos" className='register-page-link'>{EN_UC_I_AGREE_END}</Link></label>
           </div>
 
-          <button type='submit' className='register-page-register-btn'>Register</button>
+          <button type='submit' className='register-page-register-btn'>{EN_UC_REGISTER_HEADER}</button>
 
           <div className='register-page-login-link'>
-            <p>Already have an account? <Link to='/login' className='register-page-link register-page-login-link'>Login</Link></p>
+            <p>{EN_UC_YES_ACCOUNT} <Link to='/login' className='register-page-link register-page-login-link'>{EN_UC_LOGIN_HEADER}</Link></p>
           </div>
         </form>
       </div>

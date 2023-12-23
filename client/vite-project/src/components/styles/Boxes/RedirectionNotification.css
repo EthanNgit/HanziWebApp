@@ -1,0 +1,45 @@
+@import url('../../../global//variables.css');
+
+.redirection-notification-wrapper {
+    width: 20%;
+    min-width: 300px;
+    height: auto;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius: 6px;
+    color: var(--white-full);
+    border: 1px solid var(--white-full);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    background-color: var(--gray-min);
+}
+
+.notification-bar {
+    height: 2px;
+    background-color: var(--white-med);
+    width: 100%;
+    border: none;
+    margin-bottom: 0;
+}
+
+.redirection-notification-wrapper h1 {
+    padding: 0% 10%;
+    margin-bottom: 0;
+    margin-top: 2%;
+} 
+
+.redirection-notification-wrapper p {
+    padding: 0% 10%;
+    margin: 3% 0%;
+}
+
+.redirection-notification-wrapper button {
+    margin: 0;
+    margin-bottom: 20px;
+}

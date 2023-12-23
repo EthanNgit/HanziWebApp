@@ -1,0 +1,106 @@
+@import url('../../../global/variables.css');
+
+.hanzi-review-wrapper {
+    width: 90%;
+    height: 30vh;
+
+    margin: 10vh 5%;
+
+    
+    border-radius: 6px 6px 0 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--gray-med);
+    color: var(--white-full);
+    font-family: 'Roboto';
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.hanzi-review-info-div {
+    width: 100%;
+    min-height: 10%;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hanzi-review-info-div p {
+    text-align: end;
+    flex-basis: 45%;
+    padding: 4% 2%;
+
+    font-size: 25px;
+}
+
+.hanzi-review-info-div p:first-child {
+    text-align: start;
+}
+
+.hanzi-review-wrapper h1 {
+    margin-top: 40px;
+    font-family: 'Noto';
+}
+
+.hanzi-review-hint {
+    font-size: 18px;
+    color: var(--brand-two);
+    margin: 0;
+}
+
+.hanzi-review-answer-bar {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+} 
+
+.review-hanzi-button-clicked {
+    color: var(--white-min);
+}
+
+.hanzi-review-answer-bar input {
+    flex-basis: 60%;
+
+    min-height: 50px;
+
+    font-weight: 500;
+    font-size: 25px;
+    text-align: center;
+
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: var(--white-med);
+}
+
+.hanzi-correct-color {
+    color: var(--confirmation-green) !important;
+}
+
+.hanzi-wrong-color {
+    color: var(--error-red) !important;
+}
+
+.hanzi-review-answer-bar button {
+    flex-basis: 15%;
+
+    min-height: 50px;
+
+    font-weight: 700;
+    font-size: 20px;
+    text-align: end;
+    padding-right: 5%;
+
+    border: none;
+    background-color: transparent;
+    color: var(--white-full);
+}

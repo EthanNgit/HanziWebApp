@@ -8,24 +8,14 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Validator } from '../../global/Ts/Validator';
 import ToTopButton from '../../components/components/Buttons/ToTopButton';
-
-interface hanziRow {
-  id: number,
-  simplified: string,
-  traditional: string,
-  pinyin: string,
-  simplifiedStrokeCount: string,
-  traditionalStrokeCount: string,
-  hskLevel: number, 
-  characterCount: number, 
-  category: string,
-}
+import '../../global/Interfaces/IHanziRow';
+import { EN_UC_HANZI_INPUT_HINT, EN_UC_HSK_HEADER, EN_UC_OPTIONS_HEADER } from '../../global/Ts/Strings';
 
 function SearchPage() {
   const navigate = useNavigate();
   const { authState } = useContext(AuthContext);
   const { visible: optionsVisible, setVisible: setOptionsVisible, ref: optionsRef } = useOutsideClickAlert(false);
-  const [items, setItems] = useState<hanziRow[]>([]);
+  const [items, setItems] = useState<HanziRow[]>([]);
   const [val, setVal] = useState("");
   const validator = new Validator();
   const searchRef = useRef<HTMLDivElement>(null);
@@ -80,10 +70,10 @@ function SearchPage() {
   return (
     <div className='search-page-contents'>
         <div className='search-search-box'>
-            <input type='text' placeholder='enter hanzi or pinyin...' onKeyDown={ searchHanzi } onChange={e => {
+            <input type='text' placeholder={EN_UC_HANZI_INPUT_HINT} onKeyDown={ searchHanzi } onChange={e => {
               setVal(e.target.value);
             }}/>
-            <button className='search-search-settings-btn' onClick={() => setOptionsVisible(optionsVisible => !optionsVisible)}>Options <FontAwesomeIcon icon={faCaretDown} /></button>
+            <button className='search-search-settings-btn' onClick={() => setOptionsVisible(optionsVisible => !optionsVisible)}>{EN_UC_OPTIONS_HEADER} <FontAwesomeIcon icon={faCaretDown} /></button>
         </div>
 
         {
@@ -126,7 +116,7 @@ function SearchPage() {
       }
 
       <div className="outer-grid-wrapper">
-        <h1>HSK 1</h1>
+        <h1>{EN_UC_HSK_HEADER} 1</h1>
         <div className='search-grid-wrapper'>
               <div className="search-grid-container" ref={searchRef}>
                 {items.map((item) => (

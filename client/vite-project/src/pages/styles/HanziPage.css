@@ -121,6 +121,20 @@
     margin-left: 25px;
 }
 
+.hanzi-dictionary-hanzi-details {
+    margin: 50px 0px;
+    min-height: 10vh;
+    padding-bottom: 10px;
+    background-color: var(--gray-min);   
+    background-color: var(--gray-min);
+    outline: 1px solid var(--white-med);
+    border-radius: 6px;
+}
+
+.hanzi-dictionary-hanzi-details h1 {
+    padding-top: 20px;
+}
+
 .hanzi-dictionary-about-sentences {
     margin: 50px 0px;
     min-height: 20vh;
@@ -132,7 +146,13 @@
 }
 
 .hanzi-dictionary-about-sentences h1 {
-    padding-top: 20px;
+    padding-top: 5px;
+}
+
+.sentences-top-bar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
 .sentence-highlight-word {
@@ -148,8 +168,39 @@
     font-size: 25px;
 }
 
+.hanzi-dictionary-hanzi-details-text {
+    font-size: 18px;
+    margin: 0px 25px;
+    margin-bottom: 25px;
+}
+
 .translation {
     font-size: 15px;
+}
+
+.top-right {
+    position: absolute;
+    top: 0;
+    right: 10%;
+    margin-left: auto;
+    margin-top: 8vh;
+}
+.bottom-right {
+    position: absolute;
+    bottom: 0;
+    right: 10%;
+    margin-left: auto;
+    margin-top: 8vh;
+}
+
+.top-right-hanzi-icon {
+    color: var(--white-full);
+    cursor: pointer;
+}
+
+.learning-progress {
+    font-family: 'Roboto';
+    color: var(--white-full);
 }
 
 @media (max-width: 768px) { 

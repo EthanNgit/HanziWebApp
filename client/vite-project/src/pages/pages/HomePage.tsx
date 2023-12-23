@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import '../styles/HomePage.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../helpers/AuthContext';
+import { EN_UC_INTRO_CALL_TO_ACTION_1, EN_UC_INTRO_CALL_TO_ACTION_2, EN_UC_INTRO_SIGN_UP } from '../../global/Ts/Strings';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -17,9 +18,9 @@ const HomePage = () => {
   return (
     <div className='home-page-contents'>
       <div className='home-page-row-one'>
-        <h1 className='home-page-call-to-action home-page-call-to-action-one'>Start Your Hanzi Adventure Today.</h1>
-        <h1 className='home-page-call-to-action'>Hanzi Made Easy.</h1>
-        <Link to="/register"><button className='home-page-sign-up-btn'>Sign up free</button></Link>
+        <h1 className='home-page-call-to-action home-page-call-to-action-one'>{EN_UC_INTRO_CALL_TO_ACTION_1}</h1>
+        <h1 className='home-page-call-to-action'>{EN_UC_INTRO_CALL_TO_ACTION_2}</h1>
+        <Link to="/register"><button className='home-page-sign-up-btn'>{EN_UC_INTRO_SIGN_UP}</button></Link>
         
       </div>
       <div className='home-page-row-two'>

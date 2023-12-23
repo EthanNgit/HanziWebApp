@@ -12,7 +12,9 @@ import { AuthContext } from './helpers/AuthContext';
 import axios from 'axios';
 import PageNotFound from './pages/pages/PageNotFound';
 import Hanzi from './pages/pages/HanziPage';
+import HanziReview from './pages/pages/Learn/HanziReview';
 import Learn from './pages/pages/LearnPage';
+import Lesson from './pages/pages/LessonPage';
 
 function App() {
   const [authState, setAuthState] = useState({
@@ -51,7 +53,9 @@ function App() {
           <Route path="/dashboard" element = {<Dashboard />}/>
           <Route path="/search" element = {<Search />}/>
           <Route path="/hanzi/:char" element = {<Hanzi />}/>
+          <Route path="/hanzi/review" element = {<HanziReview />}/>
           <Route path="/learn" element = {<Learn />}/>
+          <Route path="/learn/:lesson" element = {<Lesson />}/>
           <Route path="/*" element = {<PageNotFound/>}/>
         </Routes>
     </BrowserRouter>
