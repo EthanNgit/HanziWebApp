@@ -14,6 +14,7 @@ This Application was for me to study hanzi more as well as provide a way for peo
 
 ## Walkthrough
 > TBC
+![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/f033511d-6731-4251-8c30-1c63ef0a16e5)
 
 ## Past versions
 > Documentation of each git release is contained and stored.
