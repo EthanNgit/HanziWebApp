@@ -11,12 +11,15 @@ import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons/faArr
 import { useOutsideClickAlert } from '../../../hooks/outsideClickAlert';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons/faMagnifyingGlass';
 import { faBars } from '@fortawesome/free-solid-svg-icons/faBars';
+import axios from 'axios';
+import { API_CALCULATE_LEVEL_URL } from '../../../global/Ts/Strings';
 
 
 function NavBarMain() {
     const { authState, setAuthState } = useContext(AuthContext);
     const { visible: profileVisible, setVisible: setProfileVisible, ref: profileRef } = useOutsideClickAlert(false);
     const { visible: mobileVisible, setVisible: setMobileVisible, ref: mobileRef } = useOutsideClickAlert(false);
+    const [userMastery, setUserMastery] = useState<string>("Novice");
 
     const logout = () => {
         localStorage.removeItem('accessToken');
@@ -30,6 +33,16 @@ function NavBarMain() {
             setMobileVisible(mobileVisible => !mobileVisible);
         }
     }
+
+    useEffect(() => {
+        axios.post(API_CALCULATE_LEVEL_URL, { userId: authState.id }).then((response): void | undefined => {
+            if (response.data.error) {
+              //alert(response.data.error);
+            } else {
+                setUserMastery(response.data.userMastery || "Novice");
+            }
+          });
+    }, [authState.id]);
 
     return (
         <div>
@@ -60,7 +73,7 @@ function NavBarMain() {
                             <p className='nav-profile-text-name'> {authState.email.length > 8 ?
                                 `${authState.email.substring(0, 8)}...` : authState.email
                             }</p>
-                            <p className='nav-profile-text-level'>Novice</p>
+                            <p className='nav-profile-text-level'>{userMastery || "Novice"}</p>
                         </span></li>
                         <li className='nav-link-item'> 
                             <FontAwesomeIcon icon={faBell} className='nav-icon'/>

@@ -1,12 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import '../../styles/Boxes/PinyinGame.css'
 import TTSButton from '../Buttons/TTSButton'
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons/faPlay';
 import '../../../global/Interfaces/IHanziRow';
+import { HanziContext } from '../../../helpers/HanziContext';
 
 function PinyinGame() {
+    const allHanziContext = useContext(HanziContext);
+    let filteredHanzi: HanziRow[] = [];
     const [items, setItems] = useState<HanziRow[]>([]);
     const [currentPinyin, setCurrentPinyin] = useState<HanziRow | undefined>();
     const [currentScore, setCurrentScore] = useState<number>(0);
@@ -21,11 +24,9 @@ function PinyinGame() {
         }
       };
 
-    const hasToneMarks = (pinyin: string) => /[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/.test(pinyin);
-    
-    const generatePinyin = (array: HanziRow[]) => {
+      const hasToneMarks = (pinyin: string) => /[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/.test(pinyin);
+      const generatePinyin = (array: HanziRow[]) => {
       let randomItem = array[Math.floor(Math.random() * array.length)];
-    
       while (!hasToneMarks(randomItem.pinyin)) {
         randomItem = array[Math.floor(Math.random() * array.length)];
       }
@@ -34,23 +35,19 @@ function PinyinGame() {
     };
     
     const fetchData = async () => {
-      try {
-        const response = await axios.get('http://localhost:3001/api/hanzi/get/pinyin-game');
-        if (response.data.error) {
-          alert(response.data.error);
-        } else {
-          const data = response.data;
-          setItems(data);
-          setCurrentPinyin(generatePinyin(data));
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
+      if (filteredHanzi) {
+        console.log(filteredHanzi);
+        setItems(filteredHanzi);
+        setCurrentPinyin(generatePinyin(filteredHanzi));
+      } else {
+        console.error('Error fetching data');
       }
     };
     
     useEffect(() => {
+      filteredHanzi = allHanziContext.allHanziState.filter(obj => obj.pinyin.length <= 2);
       fetchData();
-    }, []);
+    }, [allHanziContext.allHanziState]);
 
     useEffect(() => {
         handleClickOutsideButton();

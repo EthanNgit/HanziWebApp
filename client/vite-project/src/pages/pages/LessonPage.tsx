@@ -1,24 +1,28 @@
 import React from 'react';
 import '../styles/LessonPage.css';
-import { useParams } from 'react-router-dom';
-import PinyinLesson from './Learn/PinyinLesson';
+import { useLocation, useParams } from 'react-router-dom';
+import PinyinLesson from './Learn/Lessons/PinyinLesson';
+import NumbersLesson from './Learn/Lessons/NumberLesson';
 
 function LessonPage() {
     const { lesson } = useParams();
+    const location = useLocation();
+    const { state: verifiedState } = location;
 
-    const exceptionsMap = new Map([
+    const lessonMap = new Map([
         ['pinyin', PinyinLesson],
+        ['numbers', NumbersLesson],
     ]);
 
-    const ExceptionComponent = exceptionsMap.get(lesson? lesson : '');
-    
+    const LessonComponent = lessonMap.get(lesson? lesson : '');
+    const isVerified = verifiedState?.isVerified || false;
     return (
         <>
-            {ExceptionComponent ? (
-                <ExceptionComponent/>
+            {LessonComponent ? (
+                <LessonComponent isVerified={isVerified}/>
             ) : (
                 <>
-                    <div className='margin'>Default lesson: {lesson}</div>
+                    <div className='margin'>No lesson: {lesson}</div>
                 </>
             )}
         </>

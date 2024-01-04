@@ -3,6 +3,8 @@ interface HanziRow {
     simplified: string,
     traditional: string,
     pinyin: string,
+    douyinzi: string,
+    radical: string,
     simplifiedStrokeCount: string,
     traditionalStrokeCount: string,
     definition: string,
@@ -10,5 +12,7 @@ interface HanziRow {
     hskLevel: number, 
     characterCount: number, 
     category: string,
+    frequency: string,
+    commonWords: string,
     sentences: string,
 }

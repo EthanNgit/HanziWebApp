@@ -1,14 +1,16 @@
 import React, { useContext, useRef } from 'react'
-import '../../styles/Learn/PinyinLesson.css';
+import '../../../styles/Learn/Lessons/ArticleMain.css';
 import { faVolumeHigh } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import TTSButton from '../../../components/components/Buttons/TTSButton';
-import PinyinGame from '../../../components/components/Boxes/PinyinGame';
-import ScrollToButton from '../../../components/components/Buttons/ScrollToButton';
-import FinishLessonButton from '../../../components/components/Buttons/FinishLessonButton';
-import { AuthContext } from '../../../helpers/AuthContext';
+import TTSButton from '../../../../components/components/Buttons/TTSButton';
+import PinyinGame from '../../../../components/components/Boxes/PinyinGame';
+import ScrollToButton from '../../../../components/components/Buttons/ScrollToButton';
+import FinishLessonButton from '../../../../components/components/Buttons/FinishLessonButton';
+import { AuthContext } from '../../../../helpers/AuthContext';
 
-function PinyinLesson() {
+
+
+function PinyinLesson({isVerified} : LessonProps) {
   const { authState } = useContext(AuthContext);
   const TonesRef = useRef<HTMLDivElement>(null);
   const SandhiRef = useRef<HTMLDivElement>(null);
@@ -137,8 +139,7 @@ function PinyinLesson() {
             </p>
             <a href="https://yoyochinese.com/chinese-learning-tools/Mandarin-Chinese-pronunciation-lesson/pinyin-chart-table" target="_blank" rel="noopener noreferrer" className='article-link'><h4>Interactive pinyin chart</h4></a>
 
-            <FinishLessonButton userId={ authState.id }lessonId='1'/>
-
+            {isVerified && <FinishLessonButton userId={ authState.id }lessonId='1'/>}
           </div>
         </div>
         <div className="article-ads-wrapper">

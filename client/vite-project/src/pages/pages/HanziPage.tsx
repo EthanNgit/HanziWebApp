@@ -14,8 +14,9 @@ import TTSButton from '../../components/components/Buttons/TTSButton';
 import '../../global/Interfaces/IHanziRow';
 import '../../global/Ts/Strings'
 import '../../global/Ts/Strings';
-import { EN_LC_STROKES_HEADER, EN_UC_ABOUT_HEADER, EN_UC_DETAILS_HEADER, EN_UC_HANZI_REDIRECTION_DESCRIPTION, EN_UC_HSK_LEVEL_HEADER, EN_UC_REVIEW_HANZI_HEADER, EN_UC_SENTENCES_HEADER, EN_UC_SPEECH_TYPE_HEADER, EN_UC_STROKE_ORDER_HEADER_HEADER } from '../../global/Ts/Strings';
+import { EN_LC_STROKES_HEADER, EN_UC_ABOUT_HEADER, EN_UC_COMMON_WORDS_HEADER, EN_UC_DETAILS_HEADER, EN_UC_HANZI_REDIRECTION_DESCRIPTION, EN_UC_HSK_LEVEL_HEADER, EN_UC_OTHER_PRONUNCIATIONS_HEADER, EN_UC_PRIMARY_RADICAL_HEADER, EN_UC_REVIEW_HANZI_HEADER, EN_UC_SENTENCES_HEADER, EN_UC_SPEECH_TYPE_HEADER, EN_UC_STROKE_ORDER_HEADER_HEADER } from '../../global/Ts/Strings';
 import RedirectionNotification from '../../components/components/Boxes/RedirectionNotification';
+import ToggleButton from '../../components/components/Buttons/ToggleButton';
 
 interface HanziWriterProps {
   character: string;
@@ -86,7 +87,7 @@ function HanziPage(HanziPageProps: any) {
           newIndex = currentIndex + 1;
 
           // make 174 dynamic
-          if (newIndex < 174) {
+          if (newIndex <= 174) {
             navigate(`/hanzi/${newIndex}`, { state: { isLearning: isLearning, learningList: learningList } });
             startCooldown();
           }
@@ -198,6 +199,10 @@ function HanziPage(HanziPageProps: any) {
       return <div>Loading...</div>;
     }
 
+    const onPinyinToggle = (option: boolean) => {
+      setIsShowingPinyin(!option);
+    }
+
     return (
       <div className='hanzi-dictionary-wrapper'>
         <div className='hanzi-dictionary-main'>
@@ -219,8 +224,13 @@ function HanziPage(HanziPageProps: any) {
             <div className='hanzi-dictionary-about-flex'>
               <div className="hanzi-dictionary-about-flex-1">
                 <h1>{EN_UC_ABOUT_HEADER} {items[0]?.simplified}</h1>
-                <p>{EN_UC_HSK_LEVEL_HEADER}<br/><span>HSK {items[0]?.hskLevel}</span></p>
-                <p>{EN_UC_SPEECH_TYPE_HEADER}<br/><span>{items[0]?.category}</span></p>
+                <div className="hanzi-dictionary-about-flex-1-1">
+                  <p>{EN_UC_HSK_LEVEL_HEADER}<br/><span>HSK {items[0]?.hskLevel}</span></p>
+                  <p>{EN_UC_SPEECH_TYPE_HEADER}<br/><span>{items[0]?.category}</span></p>
+                  {items[0]?.radical && <p>{EN_UC_PRIMARY_RADICAL_HEADER}<br/><span>{items[0]?.radical}</span></p>}
+                  {items[0]?.douyinzi && <p>{EN_UC_OTHER_PRONUNCIATIONS_HEADER}<br/><span>{Array.from(new Set(JSON.parse(items[0]?.douyinzi))).join(', ')}</span></p>}
+                </div>
+
               </div>
               <div className="hanzi-dictionary-about-flex-2">
                 <h1>{EN_UC_STROKE_ORDER_HEADER_HEADER} {items[0]?.simplified}</h1>
@@ -244,7 +254,9 @@ function HanziPage(HanziPageProps: any) {
               <div className="hanzi-dictionary-hanzi-details">
                 <h1>{EN_UC_DETAILS_HEADER}</h1>
                 <div className="hanzi-dictionary-hanzi-details-text">
-                {highlightCharacter(items[0]?.about, items[0]?.simplified)}
+                  <pre className='hanzi-dictionary-hanzi-details-pre'>
+                    {highlightCharacter(items[0]?.about, items[0]?.simplified)}
+                  </pre>
                 </div>
               </div>
              )
@@ -252,6 +264,7 @@ function HanziPage(HanziPageProps: any) {
             <div className="hanzi-dictionary-about-sentences">
               <div className="sentences-top-bar">
                 <h1>{EN_UC_SENTENCES_HEADER} {items[0]?.simplified}</h1>
+                <ToggleButton buttonNames={{ buttonOne: 'Translation', buttonTwo: 'Pinyin' }} onToggle={onPinyinToggle}/>
               </div>
 
               {Array.from(sentencesMap?.entries()).map(([sentence, {translation, pinyin}], index) => (
@@ -261,7 +274,7 @@ function HanziPage(HanziPageProps: any) {
                     <TTSButton text={`${sentence}`}/>
                   </div>
                   {isShowingPinyin
-                  ? <div className="translation">{pinyin || ""}</div>
+                  ? <div className="translation">{pinyin || translation}</div>
                   : <div className="translation">{translation}</div>
                   }
                 </div>

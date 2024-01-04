@@ -35,6 +35,11 @@
     font-weight: 800;
     color: var(--brand-one);
     text-shadow: 2px 5px 7px rgba(0, 0, 0, 0.2);
+    user-select: none;
+}
+
+.hanzi-dictionary-pinyin {
+    user-select: none;
 }
 
 .hanzi-dictionary-pinyin, .hanzi-dictionary-definition {
@@ -82,6 +87,18 @@
     background-color: var(--gray-min);
     outline: 1px solid var(--white-med);
     border-radius: 6px;
+}
+
+.hanzi-dictionary-about-flex-1-1 {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+    grid-gap: 10px; /* Adjust the gap between items as needed */
+  }
+
+.hanzi-dictionary-about-flex-1-1 p {
+    margin: 0;
+    margin-bottom: 10px;
 }
 
 .hanzi-dictionary-about-flex-1 span {
@@ -145,14 +162,26 @@
     border-radius: 6px;
 }
 
+.hanzi-dictionary-hanzi-details-pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;  
+    white-space: -pre-wrap;      
+    white-space: -o-pre-wrap;    
+    word-wrap: break-word; 
+    font-family: 'Noto';
+}
+
 .hanzi-dictionary-about-sentences h1 {
-    padding-top: 5px;
+    margin: 0;
 }
 
 .sentences-top-bar {
-    width: 100%;
+    width: calc(96% - 25px);
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    padding: 0 25px;
+    padding-top: 25px;
 }
 
 .sentence-highlight-word {

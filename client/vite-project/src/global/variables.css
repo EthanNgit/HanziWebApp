@@ -73,14 +73,14 @@
 
 :root 
 {
-    --gray-full: #171717;
-    --gray-med: #202020;
-    --gray-min: #2e2e2e;
+    --gray-full: #0e0e10;
+    --gray-med: #18181b;
+    --gray-min: #1f1f23;
     --white-full: #f0f0f0;
     --white-med: #f2f3f499;
     --white-min: #f2f3f461;
-    --brand-one: #DE2910;
-    --brand-two: #b52200;
+    --brand-one: #0366ca;
+    --brand-two: #023d80;
     --confirmation-green: #4CAF50;
     --error-red: #D32F2F;
     --hyper-link: #0077B6;

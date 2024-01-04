@@ -1,8 +1,8 @@
 import { faVolumeHigh } from '@fortawesome/free-solid-svg-icons/faVolumeHigh';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import '../../styles/Buttons/TTSButton.css';
 import axios from 'axios';
 import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { API_TTS_URL } from '../../../global/Ts/Strings';
 
 interface TextToSpeechProps {
   text: string;
@@ -35,7 +35,7 @@ const TTSButton: React.ForwardRefRenderFunction<any, TextToSpeechProps> = ({ tex
 
           console.log('Played saved audio');
         } else {
-          const response = await axios.post('http://localhost:3001/api/tts', { text }, { responseType: 'arraybuffer' });
+          const response = await axios.post(API_TTS_URL, { text }, { responseType: 'arraybuffer' });
           const newAudioBuffer = { buffer: response.data, timestamp: Date.now() };
           setAudioBuffer(newAudioBuffer);
           latestAudioBufferRef.current = newAudioBuffer;

@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import '../styles/HomePage.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../helpers/AuthContext';
-import { EN_UC_INTRO_CALL_TO_ACTION_1, EN_UC_INTRO_CALL_TO_ACTION_2, EN_UC_INTRO_SIGN_UP } from '../../global/Ts/Strings';
+import { EN_UC_INTRO_CALL_TO_ACTION_1, EN_UC_INTRO_CALL_TO_ACTION_2, EN_UC_INTRO_SIGN_UP, NAV_DASHBOARD_URL } from '../../global/Ts/Strings';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ const HomePage = () => {
 
   useEffect(() => {
     if (authState.status != false) {
-      navigate("/dashboard");
+      navigate(NAV_DASHBOARD_URL);
     }
   });
 

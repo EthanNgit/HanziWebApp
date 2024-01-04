@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import '../../styles/Buttons/ScrollToButton.css'
 
 interface ScrollButtonProps {
   buttonName: string
@@ -14,7 +13,25 @@ function ScrollToButton({ buttonName, targetRef }: ScrollButtonProps) {
   };
 
   return (
-    <p className='scroll-button' onClick={scrollToDiv}>{`${buttonName}`}</p>
+    <>
+      <style>
+        {`
+          .scroll-button {
+            color: var(--white-min);
+            cursor: pointer;
+            letter-spacing: 0px;
+            margin-left: 20px;
+        }
+        
+        .scroll-button:hover {
+            color: var(--white-full);
+        }
+        
+        `}
+      </style>
+      <p className='scroll-button' onClick={scrollToDiv}>{`${buttonName}`}</p>
+    </>
+   
   );
 }
 

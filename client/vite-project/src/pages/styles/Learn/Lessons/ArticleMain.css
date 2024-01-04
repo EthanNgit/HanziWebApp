@@ -1,4 +1,4 @@
-@import url(../../styles/Learn/PinyinLesson.css);
+@import url(../../../../global/variables.css);
 
 .article-wrapper {
     position: relative;
@@ -140,6 +140,10 @@
 
 .highlight {
     color: var(--white-min)
+}
+
+.highlight-max {
+    color: var(--white-full)
 }
 
 .article-tab-header {

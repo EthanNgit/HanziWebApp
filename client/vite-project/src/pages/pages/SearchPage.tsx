@@ -10,9 +10,11 @@ import { Validator } from '../../global/Ts/Validator';
 import ToTopButton from '../../components/components/Buttons/ToTopButton';
 import '../../global/Interfaces/IHanziRow';
 import { EN_UC_HANZI_INPUT_HINT, EN_UC_HSK_HEADER, EN_UC_OPTIONS_HEADER } from '../../global/Ts/Strings';
+import { HanziContext } from '../../helpers/HanziContext';
 
 function SearchPage() {
   const navigate = useNavigate();
+  const allHanziContext = useContext(HanziContext);
   const { authState } = useContext(AuthContext);
   const { visible: optionsVisible, setVisible: setOptionsVisible, ref: optionsRef } = useOutsideClickAlert(false);
   const [items, setItems] = useState<HanziRow[]>([]);
@@ -42,15 +44,11 @@ function SearchPage() {
       navigate("/");
       return;
     }
-
-    axios.get("http://localhost:3001/api/hanzi/get").then((response) => {
-      if (response.data.error) {
-        alert(response.data.error);
-      } else {
-        setItems(response.data);
-      }
-    });
   }, []);
+
+  useEffect(() => {
+    setItems(allHanziContext.allHanziState.sort((a, b) => a.id - b.id));
+  }, [allHanziContext.allHanziState])
 
   const searchHanzi = (e: any) => {
     if (e.key === "Enter") {

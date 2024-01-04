@@ -7,6 +7,8 @@ import { EN_LC_LOADING_TEXT, EN_UC_CONTINUE_HEADER, EN_UC_HANZI_INPUT_HINT, EN_U
 import axios from 'axios';
 import { AuthContext } from '../../../helpers/AuthContext';
 import RedirectionNotification from '../../../components/components/Boxes/RedirectionNotification';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function HanziReview() {
     const location = useLocation();
@@ -19,6 +21,8 @@ function HanziReview() {
     // 1: Sentence with blanks 2: Sentence translation 3: Sentence without blanks
     const [currentReviewSentences, setCurrentReviewSentences] = useState<[string, string, string]>(['loading...', 'loading...', 'loading...']);
 
+    const [isSRSReview, setIsSRSReview] = useState<boolean>(false);
+    const [askedToLeave, setAskedToLeave] = useState<boolean | null>(false);
     const [inputValue, setInputValue] = useState('');
     const [isUsingHint, setIsUsingHint] = useState<boolean>(false);
     const [justGotCorrectAnswer, setJustGotCorrectAnswer] = useState<boolean | null>(null);
@@ -30,7 +34,20 @@ function HanziReview() {
 
     useEffect(() => {
         if (learningState && learningState.learningList !== undefined) {
-            setLearningList(new Set(learningState.learningList));
+            const idsArr = learningState.learningList.map((obj: { id: any; }) => obj.id)
+            console.log(idsArr);
+
+            axios.post("http://localhost:3001/api/hanzi/get/find-all-by-ids", {ids: idsArr}).then((response) => {
+                setLearningList(new Set(response.data));
+
+                if (learningState.isReviewing) {
+                    console.log("Review time");
+
+                    // save after every answer
+                    setIsSRSReview(learningState.isReviewing);
+                    // Change redirection notification
+                }
+            }); 
         }
     }, [learningState]);
     
@@ -86,7 +103,7 @@ function HanziReview() {
     }
 
     const handleInputChange = (event: any) => {
-        setInputValue(event.target.value);
+        setInputValue(event.target.value.trim().toLowerCase());
     };
     
     const handleSubmit = (event: any) => {
@@ -119,6 +136,12 @@ function HanziReview() {
     };
 
     const handleCorrectAnswer = () => {
+        if (isSRSReview) {
+            axios.post(`http://localhost:3001/api/stats/update-srs`, { userId: authState.id , material: currentReviewItem?.simplified }).then((response) => {
+                console.log(response.data);
+            });
+        }
+
         setJustGotCorrectAnswer(true);
     };
 
@@ -127,6 +150,10 @@ function HanziReview() {
     };
 
     const updateRedirectionOption = (option: boolean | null) => {
+        if (isSRSReview) {
+            navigate("/learn");
+        }
+
         if (redirectionOption) {
             // Renav to more hanzi
         } else {
@@ -134,10 +161,27 @@ function HanziReview() {
         }
     }
 
+    const updateLeaveOption = (option: boolean | null) => {
+        if (option) {
+            navigate("/learn");
+        } else {
+            setAskedToLeave(false);
+        }
+    }
+
+    const leaveReview = () => {
+        if (isSRSReview) {
+            navigate("/learn");
+        } else {
+            console.log("Make New thing");
+            setAskedToLeave(true);
+        }
+    }
+
     return (
         <div className='hanzi-review-wrapper'>
             <div className="hanzi-review-info-div">
-                <p>{EN_UC_REVIEW_HEADER}</p>
+                <p><FontAwesomeIcon icon={faArrowLeft} onClick={leaveReview} className='hanzi-review-space-right'/>{EN_UC_REVIEW_HEADER}</p>
                 <p>{`${learningList?.size - shuffledLearningList?.length}/${learningList?.size}`}
                 </p>
             </div>
@@ -163,7 +207,18 @@ function HanziReview() {
                 />
                 <button type="submit">{justGotCorrectAnswer ? EN_UC_CONTINUE_HEADER : EN_UC_SUBMIT_HEADER}</button>
             </form>
-            {canRedirect && <RedirectionNotification header='Congrats' description='these hanzi will now show up in the review section. Continuing will start a new session with new hanzi. It is recommended to pace yourself.' selectedOption={updateRedirectionOption}/>}
+            {
+                isSRSReview ? (
+                    <>
+                        {canRedirect && <RedirectionNotification header='Review complete' description='The hanzi reviewed will be queued for review again.' oneOption={true} selectedOption={updateRedirectionOption}/>}
+                    </>
+                ) : (
+                    <>
+                        {canRedirect && <RedirectionNotification header='Review complete' description='These hanzi will now show up in the review section. Continuing will start a new session with new hanzi. It is recommended to pace yourself.' selectedOption={updateRedirectionOption}/>}
+                        {askedToLeave && <RedirectionNotification header='Leave review?' description='Leaving now will reset progress and these items will not be queued for review.' selectedOption={updateLeaveOption}/>}
+                    </>
+                )
+            }
         </div>
     )
 }

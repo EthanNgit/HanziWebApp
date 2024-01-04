@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
 import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
 import axios from 'axios';
-import { EN_UC_I_AGREE_END, EN_UC_I_AGREE_START, EN_UC_LOGIN_HEADER, EN_UC_REGISTER_HEADER, EN_UC_YES_ACCOUNT } from '../../global/Ts/Strings';
+import { API_REGISTER_URL, EN_UC_I_AGREE_END, EN_UC_I_AGREE_START, EN_UC_LOGIN_HEADER, EN_UC_REGISTER_HEADER, EN_UC_YES_ACCOUNT } from '../../global/Ts/Strings';
 
 
 const RegisterPage = () => {
@@ -55,7 +55,7 @@ function handleSubmit(e: any) {
 
   if (validator.validateEmail(email) && validator.validatePassword(password) && acceptTOS)
   {
-    axios.post("http://localhost:3001/api/register", userVals).then((response) => {
+    axios.post(API_REGISTER_URL, userVals).then((response) => {
       console.log(response);
     })
   }

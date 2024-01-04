@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext} from '../../helpers/AuthContext'
 import axios from 'axios';
 import { Validator } from '../../global/Ts/Validator';
-import { EN_UC_CONFIRM_HEADER, EN_UC_FORGOT_PASSWORD, EN_UC_KNOW_PASSWORD, EN_UC_LOGIN_HEADER, EN_UC_NO_ACCOUNT, EN_UC_REGISTER_HEADER, EN_UC_REMEMBER_ME, EN_UC_RESEND_CODE, EN_UC_RESET_PASSWORD, EN_UC_SEND_CODE } from '../../global/Ts/Strings';
+import { API_LOGIN_URL, API_PASSWORD_RESET_SEND_URL, API_PASSWORD_RESET_URL, API_PASSWORD_RESET_VERIFY_URL, EN_UC_CONFIRM_HEADER, EN_UC_FORGOT_PASSWORD, EN_UC_KNOW_PASSWORD, EN_UC_LOGIN_HEADER, EN_UC_NO_ACCOUNT, EN_UC_REGISTER_HEADER, EN_UC_REMEMBER_ME, EN_UC_RESEND_CODE, EN_UC_RESET_PASSWORD, EN_UC_SEND_CODE, NAV_DASHBOARD_URL } from '../../global/Ts/Strings';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -37,7 +37,7 @@ const LoginPage = () => {
       password: password
     }
   
-    axios.post("http://localhost:3001/api/login", userVals).then((response) => {
+    axios.post(API_LOGIN_URL, userVals).then((response) => {
         setValidEmail(email);
         setValidOTP('');
         if (response.data.error) {
@@ -45,7 +45,7 @@ const LoginPage = () => {
         } else {
           localStorage.setItem("accessToken", response.data.accessToken);
           setAuthState({email: response.data.email, id: response.data.id, status: true});
-          navigate("/dashboard");
+          navigate(NAV_DASHBOARD_URL);
         }
       });
   };
@@ -66,7 +66,7 @@ const LoginPage = () => {
     setValidEmail(email);
     setValidOTP('');
 
-    axios.post("http://localhost:3001/api/reset/send", { email }).then((response) => {
+    axios.post(API_PASSWORD_RESET_SEND_URL, { email }).then((response) => {
       if (response.data.error) {
         alert(response.data.error);
         setIsCodeButtonDisabled(false);
@@ -94,7 +94,7 @@ const LoginPage = () => {
       return;
     }
 
-    axios.post("http://localhost:3001/api/reset/verify", { email, otp }).then((response) => {
+    axios.post(API_PASSWORD_RESET_VERIFY_URL, { email, otp }).then((response) => {
       if (response.data.error) {
         alert(response.data.error);
         console.log('code is not good');
@@ -134,7 +134,7 @@ const LoginPage = () => {
     }
 
     axios
-      .post("http://localhost:3001/api/reset/reset-password", {
+      .post(API_PASSWORD_RESET_URL, {
         email: validEmail,
         otp: validOTP,
         newPassword: passwordForReset,

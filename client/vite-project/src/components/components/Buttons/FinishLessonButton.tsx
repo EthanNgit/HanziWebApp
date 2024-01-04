@@ -1,7 +1,7 @@
 import React from 'react'
-import '../../styles/Buttons/FinishLessonButton.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { API_COMPLETED_LESSONS_URL, NAV_LEARN_URL, EN_UC_FINISH_LESSON_HEADER } from '../../../global/Ts/Strings';
 
 interface FinishLessonProps {
     userId: number;
@@ -12,19 +12,47 @@ const FinishLessonButton: React.ForwardRefRenderFunction<any, FinishLessonProps>
   const navigate = useNavigate();
 
   const updateLessonsCompleted = async () => {
-      const response = await axios.post('http://localhost:3001/api/stats/completed-lessons', { userId, lessonId }).then((response) => {
+      await axios.post(API_COMPLETED_LESSONS_URL, { userId, lessonId }).then((response) => {
           if (response.data.error) {
               alert(response.data.error);
             } else {
               console.log(response.data);
-              navigate('/learn', { replace: true });
+              navigate(NAV_LEARN_URL, { replace: true });
             }
       });
   };
 
   return (
     <div className="article-complete-btn-holder">
-        <button className="button-19" role="button" onClick={updateLessonsCompleted}>Finish Lesson</button>
+      <style>
+        {`
+          .button-19 {
+            width: 50%;
+            max-width: 480px;
+            height: 50px;
+            background-color: var(--brand-one);
+            border: none;
+            color: var(--white-full);
+            font-weight: 900;
+            font-size: 90%;
+            user-select: none;
+            -webkit-user-select: none;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        
+        .article-complete-btn-holder {
+            padding-top: 10%;
+            padding-bottom: 5%;
+            display: flex;
+            min-height: 50px;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+        `}
+      </style>
+        <button className="button-19" role="button" onClick={updateLessonsCompleted}>{EN_UC_FINISH_LESSON_HEADER}</button>
     </div>
   )
 }
