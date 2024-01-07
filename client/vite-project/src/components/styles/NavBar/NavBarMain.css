@@ -12,7 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;  
+    flex-wrap: wrap;
     color: var(--white-full);
     background-color: var(--gray-min);
     font-family: 'Roboto';
@@ -45,30 +45,30 @@
 }
 
 .nav-btn {
-  align-items: center;
-  background-color: var(--brand-one);
-  border: 0;
-  border-radius: 100px;
-  box-sizing: border-box;
-  color: var(--white-full);
-  cursor: pointer;
-  display: inline-flex;
-  font-size: 16px;
-  font-weight: 600;
-  justify-content: center;
-  line-height: 20px;
-  max-width: 480px;
-  min-height: 40px;
-  min-width: 0px;
-  overflow: hidden;
-  padding: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  text-align: center;
-  touch-action: manipulation;
-  user-select: none;
-  -webkit-user-select: none;
-  vertical-align: middle;
+    align-items: center;
+    background-color: var(--brand-one);
+    border: 0;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: var(--white-full);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 480px;
+    min-height: 40px;
+    min-width: 0px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
 }
 
 .nav-btn:hover {
@@ -89,7 +89,7 @@
 
 .nav-profile-pic {
     width: 30px;
-    color: var(--gray-med)
+    color: var(--gray-med);
 }
 
 .nav-profile-text-name {
@@ -97,7 +97,6 @@
     margin-left: 40px;
     font-size: 14px;
     line-height: 5px;
-
 }
 
 .nav-profile-text-level {
@@ -133,7 +132,7 @@
     margin-right: 15px;
 }
 
-.nav-profile-sub-menu-link-item { 
+.nav-profile-sub-menu-link-item {
     margin-bottom: 10%;
     margin-left: -10%;
     list-style: none;
@@ -169,7 +168,8 @@
         max-width: 100%;
     }
 
-    .nav-logged-in-menu, .nav-profile-sub-menu-wrap {
+    .nav-logged-in-menu,
+    .nav-profile-sub-menu-wrap {
         display: none;
     }
 
@@ -232,9 +232,7 @@
         margin-right: 10%;
         scale: 150%;
     }
-
 }
-
 
 @media (max-width: 360px) {
     .nav-logo {

@@ -14,23 +14,19 @@ function LessonPage() {
         ['numbers', NumbersLesson],
     ]);
 
-    const LessonComponent = lessonMap.get(lesson? lesson : '');
+    const LessonComponent = lessonMap.get(lesson ? lesson : '');
     const isVerified = verifiedState?.isVerified || false;
     return (
         <>
             {LessonComponent ? (
-                <LessonComponent isVerified={isVerified}/>
+                <LessonComponent isVerified={isVerified} />
             ) : (
                 <>
-                    <div className='margin'>No lesson: {lesson}</div>
+                    <div className="margin">No lesson: {lesson}</div>
                 </>
             )}
         </>
     );
-
 }
 
-
-
-
-export default LessonPage
+export default LessonPage;

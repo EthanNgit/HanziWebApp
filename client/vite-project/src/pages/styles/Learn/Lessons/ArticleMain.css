@@ -8,14 +8,13 @@
 
     font-family: 'Noto';
     color: var(--white-full);
-
 }
 
 .article-title-div {
     min-height: 30vh;
     padding-top: 5vh;
 
-    background-image: url("../../../assets/images/bg_circles.svg");
+    background-image: url('../../../assets/images/bg_circles.svg');
     background-color: var(--gray-med);
     background-blend-mode: multiply;
     background-size: 100%;
@@ -82,7 +81,6 @@
 
     background-color: var(--gray-med);
     color: var(--white-full);
-
 }
 
 .table-of-contents p {
@@ -96,7 +94,7 @@
 
 .article-body {
     flex-grow: 1;
-    
+
     background-color: var(--gray-med);
 
     padding: 1% 2%;
@@ -139,15 +137,15 @@
 }
 
 .highlight {
-    color: var(--white-min)
+    color: var(--white-min);
 }
 
 .highlight-max {
-    color: var(--white-full)
+    color: var(--white-full);
 }
 
 .article-tab-header {
-    color:var(--white-med)
+    color: var(--white-med);
 }
 
 .article-tab {
@@ -179,7 +177,7 @@
 }
 
 /*Make it go to the side all the way*/
-@media (max-width: 1500px) { 
+@media (max-width: 1500px) {
     .article-ads-wrapper {
         display: none;
     }
@@ -189,7 +187,7 @@
     }
 }
 /*Make it all one column*/
-@media (max-width: 768px) { 
+@media (max-width: 768px) {
     .article-title-div {
         min-height: 15vh;
     }

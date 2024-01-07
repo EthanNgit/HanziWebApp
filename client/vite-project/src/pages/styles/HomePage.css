@@ -54,7 +54,7 @@ body {
     user-select: none;
     -webkit-user-select: none;
     vertical-align: middle;
-  }
+}
 
 .home-page-sign-up-btn:hover {
     background-color: var(--brand-two);
@@ -96,14 +96,13 @@ body {
     }
     .home-page-row-one {
         flex-basis: 100%;
-
     }
     .home-page-row-two {
         display: none;
         flex-basis: 100%;
     }
 }
-  
+
 @media (max-width: 480px) {
     .home-page-hangul-list {
         font-size: 100px;
@@ -111,7 +110,7 @@ body {
     .home-page-hangul-list-item-one {
         margin-bottom: -10%;
     }
-    
+
     .home-page-hangul-list-item-two {
         margin-bottom: -10%;
     }

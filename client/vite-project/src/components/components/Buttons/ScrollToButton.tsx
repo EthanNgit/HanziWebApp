@@ -1,21 +1,21 @@
 import React, { useRef } from 'react';
 
 interface ScrollButtonProps {
-  buttonName: string
-  targetRef: React.RefObject<HTMLDivElement>;
+    buttonName: string;
+    targetRef: React.RefObject<HTMLDivElement>;
 }
 
 function ScrollToButton({ buttonName, targetRef }: ScrollButtonProps) {
-  const scrollToDiv = () => {
-    if (targetRef.current) {
-      targetRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+    const scrollToDiv = () => {
+        if (targetRef.current) {
+            targetRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
-  return (
-    <>
-      <style>
-        {`
+    return (
+        <>
+            <style>
+                {`
           .scroll-button {
             color: var(--white-min);
             cursor: pointer;
@@ -28,11 +28,12 @@ function ScrollToButton({ buttonName, targetRef }: ScrollButtonProps) {
         }
         
         `}
-      </style>
-      <p className='scroll-button' onClick={scrollToDiv}>{`${buttonName}`}</p>
-    </>
-   
-  );
+            </style>
+            <p
+                className="scroll-button"
+                onClick={scrollToDiv}>{`${buttonName}`}</p>
+        </>
+    );
 }
 
-export default ScrollToButton
+export default ScrollToButton;

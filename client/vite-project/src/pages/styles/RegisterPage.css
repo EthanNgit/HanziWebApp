@@ -15,7 +15,6 @@ body {
     align-items: center;
     display: flex;
     flex-flow: row;
-
 }
 
 .register-page-contents * {
@@ -41,7 +40,6 @@ body {
     width: 100%;
     height: 50px;
     margin: 30px 0;
-    
 }
 
 .register-page-input-box input {
@@ -55,7 +53,7 @@ body {
     font-size: 16px;
     color: var(--white-full);
     padding: 20px 45px 20px 20px;
-} 
+}
 
 .register-page-input-box input::placeholder {
     color: var(--white-full);
@@ -97,7 +95,7 @@ body {
     border: none;
     outline: none;
     border-radius: 40px;
-    box-shadow:  0 0 10px var(--gray-min);
+    box-shadow: 0 0 10px var(--gray-min);
     cursor: pointer;
     font-size: 16px;
     color: var(--gray-med);

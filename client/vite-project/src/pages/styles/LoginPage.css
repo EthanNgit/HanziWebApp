@@ -15,7 +15,6 @@ body {
     align-items: center;
     display: flex;
     flex-flow: row;
-
 }
 
 .login-page-contents * {
@@ -41,7 +40,6 @@ body {
     width: 100%;
     height: 50px;
     margin: 30px 0;
-    
 }
 
 .login-page-input-box input {
@@ -55,7 +53,6 @@ body {
     font-size: 16px;
     color: var(--white-full);
     padding: 20px 45px 20px 20px;
-    
 }
 
 .login-page-input-box input::placeholder {
@@ -81,7 +78,6 @@ body {
     display: flex;
     justify-content: space-between;
     font-size: 14.5px;
-
 }
 
 .login-page-forgot-password label,
@@ -111,7 +107,6 @@ body {
     text-decoration: underline;
 }
 
-
 .login-page-login-btn {
     width: 100%;
     height: 45px;
@@ -119,7 +114,7 @@ body {
     border: none;
     outline: none;
     border-radius: 40px;
-    box-shadow:  0 0 10px var(--gray-min);
+    box-shadow: 0 0 10px var(--gray-min);
     cursor: pointer;
     font-size: 16px;
     color: var(--gray-med);

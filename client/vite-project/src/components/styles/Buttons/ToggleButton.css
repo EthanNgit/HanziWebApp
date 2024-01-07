@@ -2,10 +2,9 @@
 
 .toggle-button-container {
     display: flex;
-    
-  }
-  
-  .toggle-button {
+}
+
+.toggle-button {
     flex: 1;
     text-align: center;
     padding: 10px;
@@ -13,47 +12,47 @@
     cursor: pointer;
     line-height: 1;
     min-width: 150px;
-    box-sizing: border-box; 
+    box-sizing: border-box;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    
+
     background-color: var(--gray-full);
     color: var(--white-full);
-  }
-  
-  .toggle-button:first-child {
+}
+
+.toggle-button:first-child {
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
-  }
-  
-  .toggle-button:last-child {
+}
+
+.toggle-button:last-child {
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
-  }
+}
 
-  .toggle-button.selected {
+.toggle-button.selected {
     background-color: var(--brand-two);
     color: var(--white-full);
-  }
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
     .toggle-button {
-      min-width: 15px;
-      font-size: 10px;
+        min-width: 15px;
+        font-size: 10px;
     }
-  }
+}
 
-  @media (max-width: 550px) {
+@media (max-width: 550px) {
     .toggle-button {
-      max-width: 30px;
-      font-size: 10px;
-      text-overflow: ellipsis;
+        max-width: 30px;
+        font-size: 10px;
+        text-overflow: ellipsis;
     }
-  }
+}
 
-  @media (max-width: 388px) {
+@media (max-width: 388px) {
     .toggle-button {
-      max-height: 50%;
+        max-height: 50%;
     }
-  }
+}

@@ -1,31 +1,37 @@
-import React from 'react'
+import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { API_COMPLETED_LESSONS_URL, NAV_LEARN_URL, EN_UC_FINISH_LESSON_HEADER } from '../../../global/Ts/Strings';
+import {
+    API_COMPLETED_LESSONS_URL,
+    NAV_LEARN_URL,
+    EN_UC_FINISH_LESSON_HEADER,
+} from '../../../global/Ts/Strings';
 
 interface FinishLessonProps {
     userId: number;
     lessonId: string;
 }
 
-const FinishLessonButton: React.ForwardRefRenderFunction<any, FinishLessonProps> = ({ userId, lessonId }, ref) => {
-  const navigate = useNavigate();
+function FinishLessonButton({ userId, lessonId }: FinishLessonProps) {
+    const navigate = useNavigate();
 
-  const updateLessonsCompleted = async () => {
-      await axios.post(API_COMPLETED_LESSONS_URL, { userId, lessonId }).then((response) => {
-          if (response.data.error) {
-              alert(response.data.error);
-            } else {
-              console.log(response.data);
-              navigate(NAV_LEARN_URL, { replace: true });
-            }
-      });
-  };
+    const updateLessonsCompleted = async () => {
+        await axios
+            .post(API_COMPLETED_LESSONS_URL, { userId, lessonId })
+            .then((response) => {
+                if (response.data.error) {
+                    alert(response.data.error);
+                } else {
+                    console.log(response.data);
+                    navigate(NAV_LEARN_URL, { replace: true });
+                }
+            });
+    };
 
-  return (
-    <div className="article-complete-btn-holder">
-      <style>
-        {`
+    return (
+        <div className="article-complete-btn-holder">
+            <style>
+                {`
           .button-19 {
             width: 50%;
             max-width: 480px;
@@ -51,10 +57,15 @@ const FinishLessonButton: React.ForwardRefRenderFunction<any, FinishLessonProps>
             justify-content: center;
         }
         `}
-      </style>
-        <button className="button-19" role="button" onClick={updateLessonsCompleted}>{EN_UC_FINISH_LESSON_HEADER}</button>
-    </div>
-  )
+            </style>
+            <button
+                className="button-19"
+                role="button"
+                onClick={updateLessonsCompleted}>
+                {EN_UC_FINISH_LESSON_HEADER}
+            </button>
+        </div>
+    );
 }
 
-export default FinishLessonButton
+export default FinishLessonButton;

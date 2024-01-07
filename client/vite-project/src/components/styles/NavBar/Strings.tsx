@@ -68,9 +68,6 @@ export const EN_UC_REVIEW_HANZI_HEADER = 'Review hanzi';
 export const EN_UC_REVIEW_HANZI_DYNAMIC_HEADER = (reviewItems: number) => {
     return `Review ${reviewItems} hanzi`;
 };
-export const EN_UC_HANZI_DYNAMIC_HEADER = (reviewItems: number) => {
-    return `${reviewItems} hanzi`;
-};
 export const EN_UC_REVIEW_HANZI_EMPTY_HEADER = 'No hanzi to review';
 export const EN_UC_LEARN_HANZI_DYNAMIC_HEADER = (hskLevel: number) => {
     return `Learn HSK ${hskLevel}`;
@@ -102,7 +99,6 @@ export const EN_UC_FINISH_LESSON_HEADER = 'Finish lesson';
 
 // HSK dropdown
 export const EN_UP_HANZI_DROPDOWN_HINT = 'HSK levels included';
-export const EN_UP_HSK_TO_PRACTICE_HEADER = 'HSK to practice';
 
 // APIS
 export const API_LOGIN_URL = 'http://localhost:3001/api/login';
@@ -126,9 +122,6 @@ export const API_PRACTICE_CALCULATE_HANZI_COUNT_URL =
     'http://localhost:3001/api/hanzi/get/practice-hanzi/min-weight';
 
 // Nav endpoints
-export const STRING_TO_URL = (urlName: string) => {
-    return `${urlName?.toLowerCase().replace(/ /g, '-')}`;
-};
 export const NAV_LEARN_URL = '/learn';
 export const NAV_DASHBOARD_URL = '/dashboard';
 export const NAV_REVIEW_URL = '/hanzi/review';

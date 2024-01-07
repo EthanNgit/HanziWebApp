@@ -1,66 +1,55 @@
-@font-face 
-{
+@font-face {
     font-family: 'Roboto';
     font-weight: 400;
     src: url('../assets/fonts/Roboto/Roboto-Regular.ttf');
 }
-@font-face 
-{
+@font-face {
     font-family: 'Roboto';
     font-weight: 500;
     src: url('../assets/fonts/Roboto/Roboto-Medium.ttf');
 }
-@font-face 
-{
+@font-face {
     font-family: 'Roboto';
     font-weight: 700;
     src: url('../assets/fonts/Roboto/Roboto-Bold.ttf');
 }
-@font-face 
-{
+@font-face {
     font-family: 'Roboto';
     font-weight: 900;
     src: url('../assets/fonts/Roboto/Roboto-Black.ttf');
 }
 
-@font-face 
-{
+@font-face {
     font-family: 'Noto';
     src: url('../assets/fonts/Noto/NotoSansSC-VariableFont_wght.ttf');
 }
 
-@font-face 
-{
+@font-face {
     font-family: 'Montserrat';
     font-weight: 400;
     src: url('../assets/fonts/Montserrat/Montserrat-Regular.ttf');
 }
-@font-face 
-{
+@font-face {
     font-family: 'Montserrat';
     font-weight: 500;
     src: url('../assets/fonts/Montserrat/Montserrat-Medium.ttf');
 }
-@font-face 
-{
+@font-face {
     font-family: 'Montserrat';
     font-weight: 600;
     src: url('../assets/fonts/Montserrat/Montserrat-SemiBold.ttf');
 }
-@font-face 
-{
+@font-face {
     font-family: 'Montserrat';
     font-weight: 700;
     src: url('../assets/fonts/Montserrat/Montserrat-Bold.ttf');
 }
-@font-face 
-{
+@font-face {
     font-family: 'Montserrat';
     font-weight: 800;
     src: url('../assets/fonts/Montserrat/Montserrat-ExtraBold.ttf');
 }
-@font-face 
-{
+@font-face {
     font-family: 'Montserrat';
     font-weight: 900;
     src: url('../assets/fonts/Montserrat/Montserrat-Black.ttf');
@@ -71,8 +60,7 @@
     src: url(../assets/fonts/Caligraphy/caligraphy.ttf);
 }
 
-:root 
-{
+:root {
     --gray-full: #0e0e10;
     --gray-med: #18181b;
     --gray-min: #1f1f23;
@@ -81,43 +69,134 @@
     --white-min: #f2f3f461;
     --brand-one: #0366ca;
     --brand-two: #023d80;
-    --confirmation-green: #4CAF50;
-    --error-red: #D32F2F;
-    --hyper-link: #0077B6;
+    --confirmation-green: #4caf50;
+    --error-red: #d32f2f;
+    --hyper-link: #0077b6;
 }
 
 .highlight {
     animation: highlightBorder 2s 1 linear;
-  }
-  
-  @keyframes highlightBorder {
-     0% {
-        border-color: currentColor;
+}
 
-      }
-      50% {
+@keyframes highlightBorder {
+    0% {
+        border-color: currentColor;
+    }
+    50% {
         border-color: white;
-
-      }
-      100% {
+    }
+    100% {
         border-color: currentColor;
-
-      }
-  }
+    }
+}
 
 ::-webkit-scrollbar {
     width: 6px;
 }
-  
+
 ::-webkit-scrollbar-thumb {
     background-color: var(--white-full);
     border-radius: 6px;
 }
-  
+
 ::-webkit-scrollbar-track {
     background-color: var(--gray-full);
 }
 
 ::selection {
     background: var(--brand-one);
+}
+
+@keyframes redFireColorAnimation {
+    0% {
+        color: #ff5722;
+    }
+    25% {
+        color: #ffcc80;
+    }
+    50% {
+        color: #ff9800;
+    }
+    75% {
+        color: #ffcc80;
+    }
+    100% {
+        color: #ff5722;
+    }
+}
+
+@keyframes jadeFlameColorAnimation {
+    0% {
+        color: #4caf50;
+    }
+    25% {
+        color: #8bc34a;
+    }
+    50% {
+        color: #388e3c;
+    }
+    75% {
+        color: #8bc34a;
+    }
+    100% {
+        color: #4caf50;
+    }
+}
+
+@keyframes blueFireColorAnimation {
+    0% {
+        color: #2196f3;
+        scale: 1;
+    }
+    25% {
+        color: #64b5f6;
+    }
+    50% {
+        color: #1976d2;
+        scale: 1.1;
+    }
+    75% {
+        color: #64b5f6;
+    }
+    100% {
+        color: #2196f3;
+        scale: 1;
+    }
+}
+
+@keyframes purpleFlameColorAnimation {
+    0% {
+        color: #9c27b0;
+        scale: 1;
+    }
+    25% {
+        color: #ba68c8;
+    }
+    50% {
+        color: #673ab7;
+        scale: 1.2;
+    }
+    75% {
+        color: #ba68c8;
+    }
+    100% {
+        color: #9c27b0;
+        scale: 1;
+    }
+}
+
+.streak-animation-min {
+    animation: redFireColorAnimation 3s infinite;
+}
+
+.streak-animation-med {
+    animation: jadeFlameColorAnimation 3s infinite;
+}
+
+.streak-animation-high {
+    animation: blueFireColorAnimation 2s infinite;
+}
+
+.streak-animation-max {
+    animation: purpleFlameColorAnimation 1s infinite;
 }

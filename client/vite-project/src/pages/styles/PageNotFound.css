@@ -15,7 +15,7 @@
 .page-not-found-link {
     font-size: 18px;
     text-decoration: none;
-    color: var(--brand-one)
+    color: var(--brand-one);
 }
 
 .page-not-found-link:hover {

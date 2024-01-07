@@ -10,7 +10,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-image: url('../../assets/images/bg_circles.svg');
     background-color: var(--gray-min);
+    background-blend-mode: multiply;
+    background-size: 200vh;
     height: 35vh;
     position: relative;
 }
@@ -18,7 +21,7 @@
 .hanzi-prev {
     position: absolute;
     color: var(--brand-one);
-    left: 10%; 
+    left: 10%;
     scale: 2;
 }
 
@@ -42,7 +45,8 @@
     user-select: none;
 }
 
-.hanzi-dictionary-pinyin, .hanzi-dictionary-definition {
+.hanzi-dictionary-pinyin,
+.hanzi-dictionary-definition {
     position: absolute;
     top: 60%;
     left: 50%;
@@ -56,7 +60,7 @@
 }
 
 .hanzi-dictionary-definition {
-    top: 72%
+    top: 72%;
 }
 
 .hanzi-dictionary-details {
@@ -94,7 +98,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
     grid-gap: 10px; /* Adjust the gap between items as needed */
-  }
+}
 
 .hanzi-dictionary-about-flex-1-1 p {
     margin: 0;
@@ -142,7 +146,7 @@
     margin: 50px 0px;
     min-height: 10vh;
     padding-bottom: 10px;
-    background-color: var(--gray-min);   
+    background-color: var(--gray-min);
     background-color: var(--gray-min);
     outline: 1px solid var(--white-med);
     border-radius: 6px;
@@ -156,7 +160,7 @@
     margin: 50px 0px;
     min-height: 20vh;
     padding-bottom: 10px;
-    background-color: var(--gray-min);   
+    background-color: var(--gray-min);
     background-color: var(--gray-min);
     outline: 1px solid var(--white-med);
     border-radius: 6px;
@@ -164,10 +168,10 @@
 
 .hanzi-dictionary-hanzi-details-pre {
     white-space: pre-wrap;
-    white-space: -moz-pre-wrap;  
-    white-space: -pre-wrap;      
-    white-space: -o-pre-wrap;    
-    word-wrap: break-word; 
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
     font-family: 'Noto';
 }
 
@@ -232,18 +236,24 @@
     color: var(--white-full);
 }
 
-@media (max-width: 768px) { 
+@media (max-width: 768px) {
     .hanzi-dictionary-hanzi {
         font-size: 50px;
         margin-top: -5vh;
     }
-    .hanzi-dictionary-pinyin, .hanzi-dictionary-definition {
+
+    .hanzi-dictionary-main {
+        padding-bottom: 50px;
+    }
+
+    .hanzi-dictionary-pinyin,
+    .hanzi-dictionary-definition {
         position: absolute;
         top: 50%;
         left: 50%;
         font-size: 20px;
     }
-    
+
     .hanzi-dictionary-definition {
         margin: 0;
         padding: 0;
@@ -254,9 +264,9 @@
     .hanzi-dictionary-pinyin-listen-button {
         margin-left: 10px;
     }
-    
+
     .hanzi-dictionary-definition {
-        top: 72%
+        top: 72%;
     }
     .hanzi-dictionary-about-flex {
         flex-wrap: wrap;
@@ -267,5 +277,14 @@
     .hanzi-dictionary-about-flex-2 {
         flex-basis: 100%;
         margin-top: 50px;
+    }
+
+    .hanzi-dictionary-about-flex-1-1 {
+        padding: 5% 5%;
+        width: 90%;
+    }
+
+    .hanzi-dictionary-about-flex-1-1 p {
+        margin: 0;
     }
 }
