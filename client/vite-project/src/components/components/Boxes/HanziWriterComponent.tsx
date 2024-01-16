@@ -1,17 +1,16 @@
 import React, { useRef, useEffect } from 'react';
 import HanziWriter from 'hanzi-writer';
-import '../../../global/variables.css';
 
 interface HanziWriterComponentProps {
-    character: string;
+    characters: string;
 }
 
-function HanziWriterComponent({ character }: HanziWriterComponentProps) {
-    const writerRef = useRef<HTMLDivElement | null>(null);
-    const writerInstanceRef = useRef<HanziWriter | null>(null);
+function HanziWriterComponent({ characters }: HanziWriterComponentProps) {
+    const writerRefs = useRef<Array<HTMLDivElement | null>>([]);
+    const writerInstancesRef = useRef<Array<HanziWriter | null>>([]);
 
     const hanziWriterOptions = {
-        width: 100,
+        width: 100 / (characters.length < 2 ? 1 : characters.length),
         height: 100,
         padding: 5,
         showOutline: false,
@@ -22,24 +21,54 @@ function HanziWriterComponent({ character }: HanziWriterComponentProps) {
     };
 
     useEffect(() => {
-        if (!writerInstanceRef.current) {
-            const writer = HanziWriter.create(
-                writerRef.current!,
-                character,
-                hanziWriterOptions
-            );
-            writerInstanceRef.current = writer;
-        } else {
-            writerInstanceRef.current.setCharacter(character);
-        }
+        if (!characters) return;
 
-        writerInstanceRef.current.loopCharacterAnimation();
-    }, [character]);
+        writerRefs.current = Array.from(
+            { length: characters.length },
+            (_, i) => writerRefs.current[i] || null
+        );
+        writerInstancesRef.current = Array.from(
+            { length: characters.length },
+            (_, i) => writerInstancesRef.current[i] || null
+        );
+
+        Array.from(characters).forEach((character, index) => {
+            if (!writerInstancesRef.current[index]) {
+                const writer = HanziWriter.create(
+                    writerRefs.current[index]!,
+                    character,
+                    hanziWriterOptions
+                );
+                writerInstancesRef.current[index] = writer;
+            } else {
+                writerInstancesRef.current[index]!.setCharacter(character);
+            }
+        });
+
+        const chainAnimations = async () => {
+            for (let i = 0; i < characters.length; i++) {
+                await new Promise<void>((resolve) => {
+                    setTimeout(() => {
+                        writerInstancesRef.current[i]!.loopCharacterAnimation();
+                        resolve();
+                    }, hanziWriterOptions.delayBetweenLoops);
+                });
+            }
+        };
+
+        chainAnimations();
+    }, [characters, hanziWriterOptions]);
 
     return (
-        <>
-            <div ref={writerRef} />
-        </>
+        <div style={{ display: 'flex' }}>
+            {Array.from(characters).map((_, index) => (
+                <div
+                    key={index}
+                    style={{ display: 'inline-block' }}
+                    ref={(ref) => (writerRefs.current[index] = ref)}
+                />
+            ))}
+        </div>
     );
 }
 

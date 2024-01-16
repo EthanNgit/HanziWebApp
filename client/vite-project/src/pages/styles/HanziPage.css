@@ -67,7 +67,7 @@
     display: flex;
     flex-direction: column;
     background-color: var(--gray-med);
-    outline: 1px solid var(--white-med);
+    border-top: var(--border-thickness-min) solid var(--white-med);
     flex-basis: 100%;
     min-height: 65vh;
     position: relative;
@@ -89,15 +89,15 @@
 .hanzi-dictionary-about-flex-1 {
     flex-basis: 49%;
     background-color: var(--gray-min);
-    outline: 1px solid var(--white-med);
-    border-radius: 6px;
+    border: var(--border-thickness-min) solid var(--white-med);
+    border-radius: var(--rounded-max);
 }
 
 .hanzi-dictionary-about-flex-1-1 {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
-    grid-gap: 10px; /* Adjust the gap between items as needed */
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
 }
 
 .hanzi-dictionary-about-flex-1-1 p {
@@ -113,8 +113,8 @@
 .hanzi-dictionary-about-flex-2 {
     flex-basis: 49%;
     background-color: var(--gray-min);
-    outline: 1px solid var(--white-med);
-    border-radius: 6px;
+    border: var(--border-thickness-min) solid var(--white-med);
+    border-radius: var(--rounded-max);
 }
 
 .hanzi-writer-wrapper {
@@ -125,7 +125,7 @@
 
 .hanzi-writer-container {
     display: flex;
-    gap: 16px; /* Adjust the gap as needed */
+    gap: 16px;
 }
 
 .hanzi-writer-container span {
@@ -148,8 +148,8 @@
     padding-bottom: 10px;
     background-color: var(--gray-min);
     background-color: var(--gray-min);
-    outline: 1px solid var(--white-med);
-    border-radius: 6px;
+    border: var(--border-thickness-min) solid var(--white-med);
+    border-radius: var(--rounded-max);
 }
 
 .hanzi-dictionary-hanzi-details h1 {
@@ -162,8 +162,8 @@
     padding-bottom: 10px;
     background-color: var(--gray-min);
     background-color: var(--gray-min);
-    outline: 1px solid var(--white-med);
-    border-radius: 6px;
+    border: var(--border-thickness-min) solid var(--white-med);
+    border-radius: var(--rounded-max);
 }
 
 .hanzi-dictionary-hanzi-details-pre {

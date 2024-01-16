@@ -48,7 +48,7 @@ body {
     background: transparent;
     border: none;
     outline: none;
-    border: 2px solid var(--white-full);
+    border: var(--border-thickness-max) solid var(--white-full);
     border-radius: 40px;
     font-size: 16px;
     color: var(--white-full);

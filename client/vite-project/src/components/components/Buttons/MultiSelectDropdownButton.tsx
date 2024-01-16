@@ -36,13 +36,12 @@ function MultiSelectDropdownButton({
           @import url('../../../global/variables.css');
 
           .multi-select-wrapper {
-              width: 80%;
+              width: 100%;
           }
           
           .dropdown-multi-select {
               width: 100%;
-              min-height: 40px;
-              margin-bottom: 20px;
+              margin-bottom: 0px;
           } 
         `}
             </style>

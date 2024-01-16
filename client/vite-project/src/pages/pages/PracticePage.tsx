@@ -3,6 +3,7 @@ import '../styles/PracticePage.css';
 import {
     API_PRACTICE_CALCULATE_HANZI_COUNT_URL,
     EN_UC_LEARN_HANZI_HEADER,
+    STRING_TO_URL,
 } from '../../global/Ts/Strings';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
@@ -10,6 +11,7 @@ import HanziSelectionNotification from '../../components/components/Boxes/HSKSel
 import { AuthContext } from '../../helpers/AuthContext';
 import axios from 'axios';
 import { HanziContext } from '../../helpers/HanziContext';
+import { useNavigate } from 'react-router-dom';
 
 function PracticePage() {
     const [showRedirectionButton, setShowRedirectionButton] =
@@ -18,6 +20,7 @@ function PracticePage() {
         useState<string>('');
     const [redirectionButtonNavRoute, setRedirectionButtonNavRoute] =
         useState<string>('');
+    const navigate = useNavigate();
 
     const setRedirectionButtonOn = (header: string, navRoute: string) => {
         if (header) {
@@ -33,18 +36,29 @@ function PracticePage() {
         setRedirectionButtonNavRoute('');
     };
 
+    const redirectToStoriesPage = () => {
+        navigate(STRING_TO_URL('stories'), {
+            state: {
+                isVerified: true,
+                practiceMaterial: null,
+            },
+        });
+    };
+
     return (
         <div className="practice-page">
             <div className="practice-page-wrapper">
                 <div className="practice-page-main-grid">
-                    <div className="practive-page-reading-wrapper">
+                    <div className="practive-page-subject-wrapper">
                         <div className="practice-page-grid-half-wrapper">
                             <div className="practice-page-half-one">
                                 <h3>Reading</h3>
                                 <p>Practice reading comprehension.</p>
                             </div>
                             <div className="practice-page-half-two">
-                                <button className="button-20">
+                                <button
+                                    className="button-20"
+                                    onClick={() => redirectToStoriesPage()}>
                                     Stories
                                     <FontAwesomeIcon
                                         className="auto-left"
@@ -68,7 +82,7 @@ function PracticePage() {
                             </div>
                         </div>
                     </div>
-                    <div className="practive-page-listening-wrapper">
+                    <div className="practive-page-subject-wrapper">
                         <div className="practice-page-grid-half-wrapper">
                             <div className="practice-page-half-one">
                                 <h3>Listening</h3>
@@ -99,7 +113,7 @@ function PracticePage() {
                             </div>
                         </div>
                     </div>
-                    <div className="practive-page-writing-wrapper">
+                    <div className="practive-page-subject-wrapper">
                         <div className="practice-page-grid-half-wrapper">
                             <div className="practice-page-half-one">
                                 <h3>Writing</h3>
@@ -116,7 +130,7 @@ function PracticePage() {
                             </div>
                         </div>
                     </div>
-                    <div className="practive-page-lesson-wrapper">
+                    <div className="practive-page-subject-wrapper">
                         <div className="practice-page-grid-half-wrapper">
                             <div className="practice-page-half-one">
                                 <h3>Games</h3>
@@ -160,7 +174,7 @@ function PracticePage() {
                             onClick={() =>
                                 setRedirectionButtonOn(
                                     'Character practice',
-                                    'hanzi'
+                                    'character'
                                 )
                             }>
                             Characters
@@ -213,7 +227,7 @@ function PracticePage() {
                             onClick={() =>
                                 setRedirectionButtonOn(
                                     'Bookmark practice',
-                                    'traditional'
+                                    'bookmarked'
                                 )
                             }>
                             Bookmarked review

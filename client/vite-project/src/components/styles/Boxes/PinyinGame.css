@@ -13,7 +13,7 @@
     grid-template-columns: repeat(2, 100px);
     grid-template-rows: repeat(2, 100px);
     gap: 5px;
-    border: 1px solid #000;
+    border: var(--border-thickness-min) solid #000;
 }
 
 .pinyin-game-box-box {

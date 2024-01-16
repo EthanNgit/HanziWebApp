@@ -1,4 +1,4 @@
-@import url(../../../../global/variables.css);
+@import url('../../../../global/variables.css');
 
 .article-wrapper {
     position: relative;
@@ -20,6 +20,7 @@
     background-size: 100%;
 
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -28,6 +29,13 @@
     font-size: 50px;
     font-family: 'Montserrat';
     text-shadow: 2px 5px 7px rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+.article-subtitle-div {
+    font-size: 35px;
+    text-align: center;
+    margin: 0;
 }
 
 .article-main-contents {
@@ -107,6 +115,12 @@
     color: var(--white-med);
 }
 
+.article-body-story-font p {
+    font-size: 30px;
+    letter-spacing: 4px;
+    color: var(--gray-med);
+}
+
 .article-body h3 {
     font-family: 'Montserrat';
 }
@@ -176,6 +190,29 @@
     text-decoration: underline;
 }
 
+.translation-button {
+    border: none;
+    width: 100%;
+    height: 40px;
+    margin-top: 5%;
+
+    background-color: var(--gray-full);
+    color: var(--white-full);
+    font-size: 22px;
+    font-weight: 500;
+    border-radius: var(--rounded-max);
+}
+
+.translation-button:hover {
+    background-color: var(--gray-min);
+}
+
+.translated-contents {
+    color: var(--white-med);
+    font-size: 20px;
+    margin-top: 3%;
+}
+
 /*Make it go to the side all the way*/
 @media (max-width: 1500px) {
     .article-ads-wrapper {
@@ -201,5 +238,16 @@
     .article-body {
         padding-left: 20px;
         padding-right: 20px;
+    }
+}
+
+@media (max-width: 300px) {
+    .article-title-div {
+        padding: 2%;
+        padding-top: 5vh;
+    }
+
+    .article-title {
+        font-size: 30px;
     }
 }

@@ -24,7 +24,7 @@ body {
 .login-page-wrapper {
     width: 420px;
     background-color: var(--gray-med);
-    border: 2px solid var(--gray-full);
+    border: var(--border-thickness-max) solid var(--gray-full);
     box-shadow: 0 0 10px var(--gray-full);
     border-radius: 10px;
     padding: 30px 40px;
@@ -48,7 +48,7 @@ body {
     background: transparent;
     border: none;
     outline: none;
-    border: 2px solid var(--white-full);
+    border: var(--border-thickness-max) solid var(--white-full);
     border-radius: 40px;
     font-size: 16px;
     color: var(--white-full);

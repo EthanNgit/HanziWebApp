@@ -24,4 +24,18 @@ export class Validator {
         // Turns pinyin into normal characters.
         return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     }
+
+    formatDefinition(definition: string): string {
+        if (!definition) {
+            return '';
+        }
+
+        const parts = definition.split(/[,;]\s*(?:[,;]\s*){2}/);
+
+        const result = parts[0];
+
+        const formattedResult = result.replace(/[,;]/g, ',');
+
+        return formattedResult;
+    }
 }

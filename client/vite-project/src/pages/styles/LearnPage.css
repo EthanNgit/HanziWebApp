@@ -48,8 +48,8 @@
 
 .tlor-left-box {
     background-color: var(--gray-med);
-    outline: 2px solid var(--white-med);
-    border-radius: 6px;
+    border: var(--border-thickness-max) solid var(--white-med);
+    border-radius: var(--rounded-max);
 
     width: 100%;
     height: 50%;
@@ -94,8 +94,8 @@
 
 .tlor-right-box {
     background-color: var(--gray-med);
-    outline: 2px solid var(--white-med);
-    border-radius: 6px;
+    border: var(--border-thickness-max) solid var(--white-med);
+    border-radius: var(--rounded-max);
 
     width: 100%;
     height: 100%;
@@ -132,7 +132,7 @@
     align-items: center;
     background-color: var(--brand-one);
     border: 0;
-    border-radius: 3px;
+    border-radius: var(--rounded-min);
     box-sizing: border-box;
     color: var(--white-full);
     cursor: pointer;
@@ -173,7 +173,7 @@
 
 .course-grid-wrapper {
     background-color: var(--gray-full);
-    border-radius: 6px;
+    border-radius: var(--rounded-max);
 
     height: 100%;
     width: 100%;
@@ -206,10 +206,10 @@
 }
 
 .course-grid-item {
-    border: 1px solid var(--gray-min);
+    border: var(--border-thickness-min) solid var(--gray-min);
     background-color: var(--gray-med);
     color: var(--white-full);
-    border-radius: 6px;
+    border-radius: var(--rounded-max);
 
     width: calc(33.333% - 16px);
     min-height: 100px;
@@ -234,7 +234,7 @@
 }
 
 .prerequisites-completed {
-    border: 1px solid var(--white-med);
+    border: var(--border-thickness-min) solid var(--white-med);
 }
 
 .prerequisites-completed:hover {

@@ -12,9 +12,9 @@
 
     margin: 10vh 5%;
 
-    border-radius: 6px 6px 0 0;
+    border-radius: var(--rounded-max) var(--rounded-max) 0 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    outline: 2px solid var(--white-med);
+    border: var(--border-thickness-max) solid var(--white-med);
     background-color: var(--gray-min);
     color: var(--white-full);
     font-family: 'Roboto';
@@ -126,7 +126,7 @@
     cursor: pointer;
 }
 
-.hanzi-traditional-review-details-div {
+.hanzi-review-details-div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -134,12 +134,12 @@
     width: 100%;
 }
 
-.hanzi-traditional-review-details-div h1 {
+.hanzi-review-details-div h1 {
     color: var(--brand-one);
     text-shadow: 10px 10px 10px rgba(0, 0, 0, 1);
 }
 
-.hanzi-traditional-review-details-div h3 {
+.hanzi-review-details-div h3 {
     text-shadow: 10px 10px 10px rgba(0, 0, 0, 1);
 }
 
@@ -160,9 +160,14 @@
     text-align: center;
     cursor: pointer;
     font-size: 30px;
-    outline: 2px solid var(--white-med);
-    border-radius: 3px;
+    border: var(--border-thickness-max) solid var(--white-med);
+    border-radius: var(--rounded-min);
     text-shadow: 10px 10px 10px rgba(0, 0, 0, 1);
+    font-family: 'Noto';
+}
+
+.hanzi-review-lower-font {
+    font-size: 20px;
 }
 
 .hanzi-review-four-option-item:hover {
@@ -180,15 +185,15 @@
     background-color: var(--gray-med);
     text-align: center;
     font-size: 25px;
-    outline: 2px solid var(--white-min);
+    border: var(--border-thickness-max) solid var(--white-min);
     color: var(--white-med);
-    border-radius: 3px;
+    border-radius: var(--rounded-min);
     text-shadow: 10px 10px 10px rgba(0, 0, 0, 1);
     cursor: default;
 }
 
 .hanzi-review-submit-button-enabled {
-    outline: 2px solid var(--white-med);
+    border: var(--border-thickness-max) solid var(--white-med);
     color: var(--white-full);
     cursor: pointer;
 }
@@ -219,6 +224,10 @@
     scale: 1;
     margin-right: 1%;
     color: var(--white-min);
+}
+
+.hanzi-review-details-div h3 {
+    font-family: 'Noto';
 }
 
 @media (max-width: 768px) {
@@ -263,6 +272,9 @@
         flex-basis: 20%;
         padding: 0% 5%;
     }
+    .hanzi-review-lower-font {
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 450px) {
@@ -290,8 +302,8 @@
         width: 90%;
         margin: 2% 5%;
         margin-bottom: 5%;
-        border-radius: 3px;
-        outline: 1px solid var(--white-med);
+        border-radius: var(--rounded-min);
+        border: var(--border-thickness-min) solid var(--white-med);
     }
 
     .hanzi-review-answer-bar input {

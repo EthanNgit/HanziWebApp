@@ -106,7 +106,7 @@ function HanziPage(HanziPageProps: any) {
         if (!isCooldown) {
             let newIndex = 0;
             if (isLearning) {
-                if (learningIndex + 1 < 5) {
+                if (learningIndex + 1 < learningState.learningIndexes.length) {
                     newIndex = learningState.learningIndexes[learningIndex + 1];
 
                     navigate(`/hanzi/${newIndex}`, {
@@ -125,6 +125,7 @@ function HanziPage(HanziPageProps: any) {
             } else {
                 newIndex = currentIndex + 1;
                 const maxIndex = allHanziContext.allHanziState.length;
+                console.log('index: ', newIndex, ' / ', maxIndex);
                 if (newIndex <= maxIndex) {
                     navigate(`/hanzi/${newIndex}`, {
                         state: {
@@ -293,7 +294,9 @@ function HanziPage(HanziPageProps: any) {
                 {isLearning && (
                     <p className="bottom-right learning-progress">
                         {learningIndex + 1}/
-                        {maxLessonsBeforeTest?.toLocaleString()}
+                        {isLearning
+                            ? learningState.learningIndexes.length
+                            : maxLessonsBeforeTest?.toLocaleString()}
                     </p>
                 )}
                 {showPrevArrow && (
@@ -376,7 +379,9 @@ function HanziPage(HanziPageProps: any) {
                                     {items[0]?.simplified && (
                                         <div>
                                             <HanziWriterComponent
-                                                character={items[0]?.simplified}
+                                                characters={
+                                                    items[0]?.simplified
+                                                }
                                             />
                                             <p>
                                                 <span>
@@ -392,7 +397,7 @@ function HanziPage(HanziPageProps: any) {
                                     {items[0]?.traditional && (
                                         <div>
                                             <HanziWriterComponent
-                                                character={
+                                                characters={
                                                     items[0]?.traditional
                                                 }
                                             />

@@ -17,6 +17,7 @@ import Learn from './pages/pages/LearnPage';
 import Lesson from './pages/pages/LessonPage';
 import Practice from './pages/pages/PracticePage';
 import PracticeLesson from './pages/pages/PracticeLessonPage';
+import StoryViewer from './pages/pages/Practice/StoryViewPage';
 import { HanziContext } from './helpers/HanziContext';
 
 function App() {
@@ -80,6 +81,10 @@ function App() {
                             <Route
                                 path="/practice/:lesson"
                                 element={<PracticeLesson />}
+                            />
+                            <Route
+                                path="/practice/stories/:story"
+                                element={<StoryViewer />}
                             />
                             <Route path="/*" element={<PageNotFound />} />
                         </Routes>

@@ -24,10 +24,13 @@ export const EN_UC_LEVEL_OF_MASTERY = (hskLevel: number) => {
         case 4:
             return 'Advanced';
         case 5:
-            return 'Master';
+            return 'Scholar';
         case 6:
-            return 'Grandmaster';
+            return 'Master';
         default:
+            if (hskLevel >= 7) {
+                return 'Grandmaster';
+            }
             return 'None';
     }
 };
@@ -97,11 +100,17 @@ export const EN_UC_HANZI_INPUT_HINT = 'Enter pinyin or hanzi';
 export const EN_UC_HANZI_REDIRECTION_DESCRIPTION =
     'Continue to the review? You will be questioned on the hanzi.';
 
+// Practice page
+export const EN_UC_PINYIN_PRACTICE_HEADER = 'Pinyin to hanzi practice';
+export const EN_UC_CHARACTER_PRACTICE_HEADER = 'Hanzi to pinyin practice';
+export const EN_UC_TRADITIONAL_PRACTICE_HEADER =
+    'Traditional character practice';
+
 // Finish lesson button
 export const EN_UC_FINISH_LESSON_HEADER = 'Finish lesson';
 
 // HSK dropdown
-export const EN_UP_HANZI_DROPDOWN_HINT = 'HSK levels included';
+export const EN_UP_HANZI_DROPDOWN_HINT = 'Options included';
 export const EN_UP_HSK_TO_PRACTICE_HEADER = 'HSK to practice';
 
 // APIS
@@ -124,10 +133,24 @@ export const API_USER_STATS_URL = (userID: number) => {
 export const API_TTS_URL = 'http://localhost:3001/api/tts';
 export const API_PRACTICE_CALCULATE_HANZI_COUNT_URL =
     'http://localhost:3001/api/hanzi/get/practice-hanzi/min-weight';
+export const API_PRACTICE_BOOKMARK_CALCULATE_HANZI_COUNT_URL =
+    'http://localhost:3001/api/hanzi/get/bookmark-practice-hanzi/min-weight';
 
 // Nav endpoints
 export const STRING_TO_URL = (urlName: string) => {
-    return `${urlName?.toLowerCase().replace(/ /g, '-')}`;
+    let cleanedString = urlName
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^\w\s-]/g, '')
+        .replace(/'/g, '')
+        .toLowerCase()
+        .trim();
+
+    cleanedString = cleanedString.replace(/\s+/g, '-');
+
+    cleanedString = encodeURIComponent(cleanedString);
+
+    return cleanedString;
 };
 export const NAV_LEARN_URL = '/learn';
 export const NAV_DASHBOARD_URL = '/dashboard';

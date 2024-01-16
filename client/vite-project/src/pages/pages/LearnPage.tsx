@@ -20,6 +20,7 @@ import {
     API_USER_STATS_URL,
     API_GET_LESSONS_URL,
     NAV_REVIEW_URL,
+    STRING_TO_URL,
 } from '../../global/Ts/Strings';
 import { HanziContext } from '../../helpers/HanziContext';
 
@@ -124,7 +125,7 @@ function LearnPage() {
     };
 
     const startLearning = () => {
-        const exceptionsSet = new Set(['number']);
+        const exceptionsSet = new Set(['na']);
         const learningList: HanziRow[] = [];
 
         if (allHanzi !== undefined) {
@@ -270,12 +271,9 @@ function LearnPage() {
                                             onClick={() => {
                                                 if (allPrerequisitesCompleted) {
                                                     navigate(
-                                                        `/learn/${item.lessonName
-                                                            .toLowerCase()
-                                                            .replace(
-                                                                / /g,
-                                                                '-'
-                                                            )}`,
+                                                        `/learn/${STRING_TO_URL(
+                                                            item.lessonName
+                                                        )}`,
                                                         {
                                                             state: {
                                                                 isVerified:

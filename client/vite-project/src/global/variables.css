@@ -72,6 +72,12 @@
     --confirmation-green: #4caf50;
     --error-red: #d32f2f;
     --hyper-link: #0077b6;
+
+    --rounded-max: 3px;
+    --rounded-min: 0px;
+
+    --border-thickness-max: 2px;
+    --border-thickness-min: 1px;
 }
 
 .highlight {

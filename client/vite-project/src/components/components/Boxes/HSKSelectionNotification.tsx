@@ -3,6 +3,7 @@ import axios from 'axios';
 import MultiSelectDropdownButton from '../Buttons/MultiSelectDropdownButton';
 import '../../styles/Boxes/RedirectionNotification.css';
 import {
+    API_PRACTICE_BOOKMARK_CALCULATE_HANZI_COUNT_URL,
     API_PRACTICE_CALCULATE_HANZI_COUNT_URL,
     EN_UC_CONTINUE_HEADER,
     EN_UC_HANZI_DYNAMIC_HEADER,
@@ -11,6 +12,7 @@ import {
 } from '../../../global/Ts/Strings';
 import { AuthContext } from '../../../helpers/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { Validator } from '../../../global/Ts/Validator';
 
 interface HanziSelectionNotificiationProps {
     header?: string;
@@ -72,10 +74,15 @@ function HanziSelectionNotification({
         }
 
         axios
-            .post(API_PRACTICE_CALCULATE_HANZI_COUNT_URL, {
-                userId: authState.id,
-                levels: selectedHSKLevels,
-            })
+            .post(
+                navRoute === 'bookmarked'
+                    ? API_PRACTICE_BOOKMARK_CALCULATE_HANZI_COUNT_URL
+                    : API_PRACTICE_CALCULATE_HANZI_COUNT_URL,
+                {
+                    userId: authState.id,
+                    levels: selectedHSKLevels,
+                }
+            )
             .then((response) => {
                 if (response.data.error) {
                     alert(response.data.error);
@@ -120,10 +127,13 @@ function HanziSelectionNotification({
                     </p>
                 </div>
 
-                <MultiSelectDropdownButton
-                    dropdownOptions={dropdownOptions}
-                    selectedOptions={onDropdownSelect}
-                />
+                <div className="redirection-space">
+                    <MultiSelectDropdownButton
+                        dropdownOptions={dropdownOptions}
+                        selectedOptions={onDropdownSelect}
+                    />
+                </div>
+
                 {canContinue ? (
                     <button
                         className="button-18"
