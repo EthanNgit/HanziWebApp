@@ -3,6 +3,7 @@ import '../styles/LessonPage.css';
 import { useLocation, useParams } from 'react-router-dom';
 import PinyinLesson from './Learn/Lessons/PinyinLesson';
 import NumbersLesson from './Learn/Lessons/NumberLesson';
+import TimeLesson from './Learn/Lessons/TimeLesson';
 
 function LessonPage() {
     const { lesson } = useParams();
@@ -12,6 +13,7 @@ function LessonPage() {
     const lessonMap = new Map([
         ['pinyin', PinyinLesson],
         ['numbers', NumbersLesson],
+        ['time', TimeLesson],
     ]);
 
     const LessonComponent = lessonMap.get(lesson ? lesson : '');

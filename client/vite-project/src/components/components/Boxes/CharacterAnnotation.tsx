@@ -32,11 +32,12 @@ const CharacterAnnotation: React.FC<CharacterAnnotationProps> = ({
         useState<Set<string>>();
     const [isBookmarkCooldown, setIsBookmarkCooldown] =
         useState<boolean>(false);
+
     const [isBookmarked, setIsBookmarked] = useState<boolean>(false);
 
     useEffect(() => {
         axios
-            .get(`http://localhost:3001/api/texseg/${chineseWords}`)
+            .get(`http://localhost:3001/api/texseg/cn/${chineseWords}`)
             .then((response) => {
                 if (response.data) {
                     // Break words down if they do not exist in the dictionary.
@@ -61,7 +62,10 @@ const CharacterAnnotation: React.FC<CharacterAnnotationProps> = ({
             });
     }, [chineseWords]);
 
-    const handleHover = (word: string, event: React.MouseEvent) => {
+    const handleHover = (
+        word: string,
+        event: React.MouseEvent | React.TouchEvent
+    ) => {
         // Calculate the position based on the hover event
         const allHanzi: HanziRow[] = allHanziContext.allHanziState;
         if (allHanzi) {
@@ -100,18 +104,16 @@ const CharacterAnnotation: React.FC<CharacterAnnotationProps> = ({
         }
 
         const rect = (event.target as HTMLElement).getBoundingClientRect();
-        const tooltipWidth = 200; // Adjust the width of the tooltip as needed
-        const tooltipHeight = 100; // Adjust the height of the tooltip as needed
-        const top = rect.top + window.scrollY - tooltipHeight - 5; // Adjust the offset as needed
+        const tooltipWidth = 200;
+        const tooltipHeight = 100;
+        const top = rect.top + window.scrollY - tooltipHeight - 5;
 
-        // Calculate the left position and check if it exceeds the right boundary
         let left =
             rect.left + window.scrollX + rect.width / 2 - tooltipWidth / 2;
         if (left + tooltipWidth > window.innerWidth) {
             left = window.innerWidth - tooltipWidth;
         }
 
-        // Check if it exceeds the left boundary
         if (left < 0) {
             left = 0;
         }
@@ -120,7 +122,6 @@ const CharacterAnnotation: React.FC<CharacterAnnotationProps> = ({
     };
 
     const handleLeave = () => {
-        // Reset the tooltip position when the mouse leaves
         setAnnotation(null);
         setIsBookmarked(false);
         setTooltipPosition({ top: 0, left: 0 });

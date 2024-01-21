@@ -69,7 +69,7 @@ function StoriesPage() {
     const searchStory = () => {};
 
     const navigateToStory = (story: storyRow) => {
-        const title = story.title.translatedTitle;
+        const title = story.title?.translatedTitle;
 
         if (!title) {
             return;
@@ -106,8 +106,8 @@ function StoriesPage() {
                         data-key={item.id}
                         onClick={() => navigateToStory(item)}>
                         <p>{'HSK ' + item.hskLevel + ' difficulty'}</p>
-                        <p>{item.title.translatedTitle}</p>
-                        <p>{item.title.title}</p>
+                        <p>{item.title?.translatedTitle}</p>
+                        <p>{item.title?.title}</p>
                         <div className="story-read-me">
                             <p>Read story</p>
                             <FontAwesomeIcon

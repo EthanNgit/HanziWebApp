@@ -20,20 +20,44 @@ function PracticePage() {
         useState<string>('');
     const [redirectionButtonNavRoute, setRedirectionButtonNavRoute] =
         useState<string>('');
+    const [showSentenceRedirectionButton, setShowSentenceRedirectionButton] =
+        useState<boolean>(false);
+    const [
+        sentenceRedirectionButtonHeader,
+        setSentenceRedirectionButtonHeader,
+    ] = useState<string>('');
+    const [
+        sentenceRedirectionButtonNavRoute,
+        setSentenceRedirectionButtonNavRoute,
+    ] = useState<string>('');
     const navigate = useNavigate();
 
-    const setRedirectionButtonOn = (header: string, navRoute: string) => {
+    const setRedirectionButtonOn = (
+        header: string,
+        navRoute: string,
+        sentenceButton?: boolean
+    ) => {
         if (header) {
-            setShowRedirectionButton(true);
-            setRedirectionButtonHeader(header);
-            setRedirectionButtonNavRoute(navRoute);
+            // If it is being used for sentence based buttons
+            if (!sentenceButton) {
+                setShowRedirectionButton(true);
+                setRedirectionButtonHeader(header);
+                setRedirectionButtonNavRoute(navRoute);
+            } else {
+                setShowSentenceRedirectionButton(true);
+                setSentenceRedirectionButtonHeader(header);
+                setSentenceRedirectionButtonNavRoute(navRoute);
+            }
         }
     };
 
     const setRedirectionButtonOff = (event?: React.MouseEvent) => {
         setShowRedirectionButton(false);
+        setShowSentenceRedirectionButton(false);
         setRedirectionButtonHeader('');
         setRedirectionButtonNavRoute('');
+        setSentenceRedirectionButtonHeader('');
+        setSentenceRedirectionButtonNavRoute('');
     };
 
     const redirectToStoriesPage = () => {
@@ -52,28 +76,24 @@ function PracticePage() {
                     <div className="practive-page-subject-wrapper">
                         <div className="practice-page-grid-half-wrapper">
                             <div className="practice-page-half-one">
-                                <h3>Reading</h3>
-                                <p>Practice reading comprehension.</p>
+                                <h3>Stories</h3>
+                                <p>
+                                    Practice reading and listening comprehension
+                                    through stories.
+                                </p>
                             </div>
                             <div className="practice-page-half-two">
                                 <button
                                     className="button-20"
-                                    onClick={() => redirectToStoriesPage()}>
-                                    Stories
+                                    onClick={redirectToStoriesPage}>
+                                    Reading
                                     <FontAwesomeIcon
                                         className="auto-left"
                                         icon={faArrowRight}
                                     />
                                 </button>
                                 <button className="button-20">
-                                    Tongue twisters
-                                    <FontAwesomeIcon
-                                        className="auto-left"
-                                        icon={faArrowRight}
-                                    />
-                                </button>
-                                <button className="button-20">
-                                    Sentences
+                                    Listening
                                     <FontAwesomeIcon
                                         className="auto-left"
                                         icon={faArrowRight}
@@ -85,26 +105,45 @@ function PracticePage() {
                     <div className="practive-page-subject-wrapper">
                         <div className="practice-page-grid-half-wrapper">
                             <div className="practice-page-half-one">
-                                <h3>Listening</h3>
-                                <p>Practice listening skills.</p>
+                                <h3>Sentences</h3>
+                                <p>
+                                    Practice reading and listening comprehension
+                                    with sentences.
+                                </p>
                             </div>
                             <div className="practice-page-half-two">
-                                <button className="button-20">
-                                    Stories
+                                <button
+                                    className="button-20"
+                                    onClick={() =>
+                                        setRedirectionButtonOn(
+                                            'Organize sentences',
+                                            'translate-sentences',
+                                            true
+                                        )
+                                    }>
+                                    Translate
+                                    <FontAwesomeIcon
+                                        className="auto-left"
+                                        icon={faArrowRight}
+                                    />
+                                </button>
+                                <button
+                                    className="button-20"
+                                    onClick={() =>
+                                        setRedirectionButtonOn(
+                                            'Organize sentences',
+                                            'reverse-translate-sentences',
+                                            true
+                                        )
+                                    }>
+                                    Translate reverse
                                     <FontAwesomeIcon
                                         className="auto-left"
                                         icon={faArrowRight}
                                     />
                                 </button>
                                 <button className="button-20">
-                                    Tongue twisters
-                                    <FontAwesomeIcon
-                                        className="auto-left"
-                                        icon={faArrowRight}
-                                    />
-                                </button>
-                                <button className="button-20">
-                                    Sentences
+                                    Match sentences
                                     <FontAwesomeIcon
                                         className="auto-left"
                                         icon={faArrowRight}
@@ -133,12 +172,12 @@ function PracticePage() {
                     <div className="practive-page-subject-wrapper">
                         <div className="practice-page-grid-half-wrapper">
                             <div className="practice-page-half-one">
-                                <h3>Games</h3>
-                                <p>Review games from lessons.</p>
+                                <h3>Grammar</h3>
+                                <p>Review grammar rules.</p>
                             </div>
                             <div className="practice-page-half-two">
                                 <button className="button-20">
-                                    Pinyin match
+                                    Measure words
                                     <FontAwesomeIcon
                                         className="auto-left"
                                         icon={faArrowRight}
@@ -244,6 +283,13 @@ function PracticePage() {
                     header={redirectionButtonHeader}
                     clickedOutside={setRedirectionButtonOff}
                     navRoute={redirectionButtonNavRoute}
+                />
+            )}
+            {showSentenceRedirectionButton && (
+                <HanziSelectionNotification
+                    header={sentenceRedirectionButtonHeader}
+                    clickedOutside={setRedirectionButtonOff}
+                    navRoute={sentenceRedirectionButtonNavRoute}
                 />
             )}
         </div>

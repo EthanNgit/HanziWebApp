@@ -206,3 +206,11 @@
 .streak-animation-max {
     animation: purpleFlameColorAnimation 1s infinite;
 }
+
+.correct-answer {
+    color: var(--confirmation-green);
+}
+
+.wrong-answer {
+    color: var(--error-red);
+}

@@ -87,6 +87,21 @@
     color: var(--white-med);
 }
 
+.hanzi-review-answer-bar-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-basis: 60%;
+    max-height: 50px;
+}
+
+.hanzi-review-answer-bar-text p {
+    font-weight: 500;
+    font-size: 25px;
+    text-align: center;
+}
+
 .hanzi-correct-color {
     color: var(--confirmation-green) !important;
 }
@@ -136,10 +151,15 @@
 
 .hanzi-review-details-div h1 {
     color: var(--brand-one);
+    width: 100%;
+    text-align: center;
     text-shadow: 10px 10px 10px rgba(0, 0, 0, 1);
 }
 
 .hanzi-review-details-div h3 {
+    font-family: 'Noto';
+    width: 100%;
+    text-align: center;
     text-shadow: 10px 10px 10px rgba(0, 0, 0, 1);
 }
 
@@ -226,8 +246,38 @@
     color: var(--white-min);
 }
 
-.hanzi-review-details-div h3 {
+.hanzi-review-word-bank-div {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 2% 0;
+}
+
+.hanzi-review-word-bank-box {
+    font-size: 22px;
+    background-color: var(--white-full);
+    color: var(--gray-full);
+    padding: 10px;
+    min-width: 30px;
+    text-align: center;
+
+    border-radius: var(--rounded-max);
+    border: var(--border-thickness-max) solid var(--gray-med);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+
     font-family: 'Noto';
+}
+
+.hanzi-review-word-bank-box-used {
+    user-select: none;
+    background-color: var(--gray-min);
+    color: var(--gray-min);
+    cursor: default;
 }
 
 @media (max-width: 768px) {
@@ -324,5 +374,20 @@
 
     .hanzi-review-wrapper {
         min-height: 35vh;
+    }
+
+    .hanzi-review-word-bank-div {
+        margin-bottom: 10%;
+    }
+
+    .hanzi-review-answer-bar-text {
+        margin: 5% 0;
+        flex: 1;
+        width: 100%;
+    }
+
+    .hanzi-review-answer-bar-text p {
+        width: 100%;
+        text-align: center;
     }
 }
