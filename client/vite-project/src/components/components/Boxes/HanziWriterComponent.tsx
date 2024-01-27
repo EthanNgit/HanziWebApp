@@ -23,22 +23,12 @@ function HanziWriterComponent({ characters }: HanziWriterComponentProps) {
     useEffect(() => {
         if (!characters) return;
 
-        writerRefs.current = Array.from(
-            { length: characters.length },
-            (_, i) => writerRefs.current[i] || null
-        );
-        writerInstancesRef.current = Array.from(
-            { length: characters.length },
-            (_, i) => writerInstancesRef.current[i] || null
-        );
+        writerRefs.current = Array.from({ length: characters.length }, (_, i) => writerRefs.current[i] || null);
+        writerInstancesRef.current = Array.from({ length: characters.length }, (_, i) => writerInstancesRef.current[i] || null);
 
         Array.from(characters).forEach((character, index) => {
             if (!writerInstancesRef.current[index]) {
-                const writer = HanziWriter.create(
-                    writerRefs.current[index]!,
-                    character,
-                    hanziWriterOptions
-                );
+                const writer = HanziWriter.create(writerRefs.current[index]!, character, hanziWriterOptions);
                 writerInstancesRef.current[index] = writer;
             } else {
                 writerInstancesRef.current[index]!.setCharacter(character);
@@ -62,11 +52,7 @@ function HanziWriterComponent({ characters }: HanziWriterComponentProps) {
     return (
         <div style={{ display: 'flex' }}>
             {Array.from(characters).map((_, index) => (
-                <div
-                    key={index}
-                    style={{ display: 'inline-block' }}
-                    ref={(ref) => (writerRefs.current[index] = ref)}
-                />
+                <div key={index} style={{ display: 'inline-block' }} ref={(ref) => (writerRefs.current[index] = ref)} />
             ))}
         </div>
     );

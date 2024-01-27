@@ -13,16 +13,10 @@ function PinyinGame() {
     const [currentPinyin, setCurrentPinyin] = useState<HanziRow | undefined>();
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
     const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
-    const ttsButtonRef = useRef() as React.MutableRefObject<{
-        forceClick: () => void;
-    } | null>;
+    const ttsButtonRef = useRef() as React.MutableRefObject<{ forceClick: () => void } | null>;
 
     useEffect(() => {
-        setFilteredHanzi(
-            allHanziContext.allHanziState.filter(
-                (obj) => obj.pinyin.length <= 2
-            )
-        );
+        setFilteredHanzi(allHanziContext.allHanziState.filter((obj) => obj.pinyin.length <= 2));
     }, [allHanziContext.allHanziState]);
 
     useEffect(() => {
@@ -85,9 +79,7 @@ function PinyinGame() {
 
             setTimeout(() => {
                 setIsCorrect(null);
-                const newPinyin = generatePinyin(
-                    items.filter((item) => item.id !== currentPinyin.id)
-                );
+                const newPinyin = generatePinyin(items.filter((item) => item.id !== currentPinyin.id));
                 setCurrentPinyin(newPinyin);
             }, 1000);
         } else {
@@ -105,52 +97,29 @@ function PinyinGame() {
             {!isPlaying ? (
                 <div className="pinyin-game-box align-grid-middle">
                     <div className="circle">
-                        <FontAwesomeIcon
-                            icon={faPlay}
-                            className="play-button"
-                            onClick={() => setIsPlaying(!isPlaying)}
-                        />
+                        <FontAwesomeIcon icon={faPlay} className="play-button" onClick={() => setIsPlaying(!isPlaying)} />
                     </div>
                 </div>
             ) : (
                 <>
                     <div className="pinyin-game-box">
-                        <div
-                            className={`pinyin-game-box-box pinyin-tone-1 ${
-                                isCorrect === true ? 'correct' : ''
-                            } ${isCorrect === false ? 'incorrect' : ''}`}
-                            onClick={() => checkAnswer(1)}>
+                        <div className={`pinyin-game-box-box pinyin-tone-1 ${isCorrect === true ? 'correct' : ''} ${isCorrect === false ? 'incorrect' : ''}`} onClick={() => checkAnswer(1)}>
                             <p>ˉ</p>
                         </div>
-                        <div
-                            className={`pinyin-game-box-box pinyin-tone-2 ${
-                                isCorrect === true ? 'correct' : ''
-                            } ${isCorrect === false ? 'incorrect' : ''}`}
-                            onClick={() => checkAnswer(2)}>
+                        <div className={`pinyin-game-box-box pinyin-tone-2 ${isCorrect === true ? 'correct' : ''} ${isCorrect === false ? 'incorrect' : ''}`} onClick={() => checkAnswer(2)}>
                             <p>ˊ</p>
                         </div>
-                        <div
-                            className={`pinyin-game-box-box pinyin-tone-3 ${
-                                isCorrect === true ? 'correct' : ''
-                            } ${isCorrect === false ? 'incorrect' : ''}`}
-                            onClick={() => checkAnswer(3)}>
+                        <div className={`pinyin-game-box-box pinyin-tone-3 ${isCorrect === true ? 'correct' : ''} ${isCorrect === false ? 'incorrect' : ''}`} onClick={() => checkAnswer(3)}>
                             <p>ˇ</p>
                         </div>
-                        <div
-                            className={`pinyin-game-box-box pinyin-tone-4 ${
-                                isCorrect === true ? 'correct' : ''
-                            } ${isCorrect === false ? 'incorrect' : ''}`}
-                            onClick={() => checkAnswer(4)}>
+                        <div className={`pinyin-game-box-box pinyin-tone-4 ${isCorrect === true ? 'correct' : ''} ${isCorrect === false ? 'incorrect' : ''}`} onClick={() => checkAnswer(4)}>
                             <p>ˋ</p>
                         </div>
                     </div>
                     <div className="circle">
                         {currentPinyin && (
                             <>
-                                <TTSButton
-                                    ref={ttsButtonRef}
-                                    text={`${currentPinyin.pinyin}`}
-                                />
+                                <TTSButton ref={ttsButtonRef} text={`${currentPinyin.pinyin}`} />
                             </>
                         )}
                     </div>

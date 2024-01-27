@@ -6,46 +6,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
 import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
 import axios from 'axios';
-import {
-    API_REGISTER_URL,
-    EN_UC_I_AGREE_END,
-    EN_UC_I_AGREE_START,
-    EN_UC_LOGIN_HEADER,
-    EN_UC_REGISTER_HEADER,
-    EN_UC_YES_ACCOUNT,
-} from '../../global/Ts/Strings';
+import { API_REGISTER_URL, EN_UC_I_AGREE_END, EN_UC_I_AGREE_START, EN_UC_LOGIN_HEADER, EN_UC_REGISTER_HEADER, EN_UC_YES_ACCOUNT } from '../../global/Ts/Strings';
 
 const RegisterPage = () => {
     return (
         <div className="register-page-contents">
             <div className="register-page-wrapper">
                 <form action="" noValidate onSubmit={handleSubmit}>
-                    <h1 className="register-page-h1">
-                        {EN_UC_REGISTER_HEADER}
-                    </h1>
+                    <h1 className="register-page-h1">{EN_UC_REGISTER_HEADER}</h1>
                     <div className="register-page-input-box">
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Email"
-                            required
-                        />
-                        <FontAwesomeIcon
-                            icon={faUser}
-                            className="register-page-icon"
-                        />
+                        <input type="email" name="email" placeholder="Email" required />
+                        <FontAwesomeIcon icon={faUser} className="register-page-icon" />
                     </div>
                     <div className="register-page-input-box">
-                        <input
-                            type="password"
-                            name="password"
-                            placeholder="Password"
-                            required
-                        />
-                        <FontAwesomeIcon
-                            icon={faLock}
-                            className="register-page-icon"
-                        />
+                        <input type="password" name="password" placeholder="Password" required />
+                        <FontAwesomeIcon icon={faLock} className="register-page-icon" />
                     </div>
 
                     <div className="register-page-terms-of-service">
@@ -58,18 +33,14 @@ const RegisterPage = () => {
                         </label>
                     </div>
 
-                    <button
-                        type="submit"
-                        className="register-page-register-btn">
+                    <button type="submit" className="register-page-register-btn">
                         {EN_UC_REGISTER_HEADER}
                     </button>
 
                     <div className="register-page-login-link">
                         <p>
                             {EN_UC_YES_ACCOUNT}{' '}
-                            <Link
-                                to="/login"
-                                className="register-page-link register-page-login-link">
+                            <Link to="/login" className="register-page-link register-page-login-link">
                                 {EN_UC_LOGIN_HEADER}
                             </Link>
                         </p>
@@ -94,11 +65,7 @@ function handleSubmit(e: any) {
 
     const validator = new Validator();
 
-    if (
-        validator.validateEmail(email) &&
-        validator.validatePassword(password) &&
-        acceptTOS
-    ) {
+    if (validator.validateEmail(email) && validator.validatePassword(password) && acceptTOS) {
         axios.post(API_REGISTER_URL, userVals).then((response) => {
             console.log(response);
         });

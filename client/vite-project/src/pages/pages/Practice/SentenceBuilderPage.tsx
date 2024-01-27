@@ -1,11 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useEffect, useState } from 'react';
-import {
-    EN_LC_LOADING_TEXT,
-    EN_UC_CONTINUE_HEADER,
-    EN_UC_REVIEW_HEADER,
-    EN_UC_SUBMIT_HEADER,
-} from '../../../global/Ts/Strings';
+import { EN_LC_LOADING_TEXT, EN_UC_CONTINUE_HEADER, EN_UC_REVIEW_HEADER, EN_UC_SUBMIT_HEADER } from '../../../global/Ts/Strings';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
@@ -26,12 +21,8 @@ function SentenceBuilderPage({ lessonType }: LessonProps) {
     const [sentenceQueue, setSentenceQueue] = useState<storyRow[]>([]);
     const [currentSentence, setCurrentSentence] = useState<storyRow>();
     const [currentWordBank, setCurrentWordBank] = useState<string[]>([]);
-    const [userCurrentResponse, setUserCurrentResponse] = useState<
-        { word: string; index: number }[]
-    >(() => []);
-    const [justGotCorrectAnswer, setJustGotCorrectAnswer] = useState<
-        boolean | null
-    >(null);
+    const [userCurrentResponse, setUserCurrentResponse] = useState<{ word: string; index: number }[]>(() => []);
+    const [justGotCorrectAnswer, setJustGotCorrectAnswer] = useState<boolean | null>(null);
 
     const [userCorrectStreak, setUserCorrectStreak] = useState<number>(0);
     const [fireAnimationName, setFireAnimationName] = useState<string>('');
@@ -39,42 +30,32 @@ function SentenceBuilderPage({ lessonType }: LessonProps) {
     const [reverseTranslate, setReverseTranslate] = useState<boolean>(false);
 
     useEffect(() => {
-        const includedHSKLevels = Array.from(
-            new Set(
-                learningState.practiceMaterial.map(
-                    (obj: { hskLevel: number }) => obj.hskLevel
-                )
-            )
-        );
+        const includedHSKLevels = Array.from(new Set(learningState.practiceMaterial.map((obj: { hskLevel: number }) => obj.hskLevel)));
 
-        axios
-            .get(
-                `http://localhost:3001/api/blocks/sentences/${includedHSKLevels}`
-            )
-            .then((response) => {
-                if (response.data) {
-                    const storyRows: storyRow[] = [];
+        axios.get(`http://localhost:3001/api/blocks/sentences/${includedHSKLevels}`).then((response) => {
+            if (response.data) {
+                const storyRows: storyRow[] = [];
 
-                    for (const row of response.data) {
-                        const parsedContents = JSON.parse(row.contents);
+                for (const row of response.data) {
+                    const parsedContents = JSON.parse(row.contents);
 
-                        const transformedData: storyRow = {
-                            id: row.id,
-                            category: row.category,
-                            contents: {
-                                story: parsedContents.story,
-                                pinyin: parsedContents.pinyin,
-                                translation: parsedContents.translation,
-                            },
-                            hskLevel: row.hskLevel,
-                        };
+                    const transformedData: storyRow = {
+                        id: row.id,
+                        category: row.category,
+                        contents: {
+                            story: parsedContents.story,
+                            pinyin: parsedContents.pinyin,
+                            translation: parsedContents.translation,
+                        },
+                        hskLevel: row.hskLevel,
+                    };
 
-                        storyRows.push(transformedData);
-                    }
-
-                    setSentences(storyRows);
+                    storyRows.push(transformedData);
                 }
-            });
+
+                setSentences(storyRows);
+            }
+        });
 
         setReverseTranslate(lessonType === 'reverse-translate-sentences');
         console.log(lessonType);
@@ -101,17 +82,11 @@ function SentenceBuilderPage({ lessonType }: LessonProps) {
 
         // Calculate word bank
         if (currentSentence && currentSentence.contents) {
-            const cleanedSplitString = await smartSplitString(
-                reverseTranslate
-                    ? currentSentence.contents.story
-                    : currentSentence.contents.translation
-            );
+            const cleanedSplitString = await smartSplitString(reverseTranslate ? currentSentence.contents.story : currentSentence.contents.translation);
 
             console.log(cleanedSplitString, 'a');
 
-            const wordBank = arrayShuffler.shuffleArray(
-                addFillerWordsToArray(cleanedSplitString)
-            );
+            const wordBank = arrayShuffler.shuffleArray(addFillerWordsToArray(cleanedSplitString));
 
             setCurrentWordBank(wordBank!);
             setCurrentSentence(currentSentence);
@@ -126,10 +101,7 @@ function SentenceBuilderPage({ lessonType }: LessonProps) {
                     if (response.data) {
                         const splitString = response.data.segmentedWords;
 
-                        const cleanedSplitString: string[] = splitString.filter(
-                            (word: string) =>
-                                word !== '' && word !== ' ' && word !== '。'
-                        );
+                        const cleanedSplitString: string[] = splitString.filter((word: string) => word !== '' && word !== ' ' && word !== '。');
 
                         return cleanedSplitString;
                     } else {
@@ -151,9 +123,7 @@ function SentenceBuilderPage({ lessonType }: LessonProps) {
             const splitString = preparedString.split(/\b/);
 
             // Remove empty strings from the array
-            const cleanedSplitString = splitString.filter(
-                (word) => word !== '' && word !== ' '
-            );
+            const cleanedSplitString = splitString.filter((word) => word !== '' && word !== ' ');
 
             return Promise.resolve(cleanedSplitString);
         }
@@ -224,17 +194,13 @@ function SentenceBuilderPage({ lessonType }: LessonProps) {
             '然而',
         ];
 
-        const fillerWords = reverseTranslate
-            ? reverseFillerWords
-            : regularFillerWords;
+        const fillerWords = reverseTranslate ? reverseFillerWords : regularFillerWords;
 
         let remainingCycles = fillerWordsAmount;
         const extraWords: Set<string> = new Set();
 
         while (remainingCycles > 0 && setOfArray.size < fillerWords.length) {
-            const randomWordIndex = Math.floor(
-                Math.random() * fillerWords.length
-            );
+            const randomWordIndex = Math.floor(Math.random() * fillerWords.length);
             const randomWord = fillerWords[randomWordIndex];
 
             if (!setOfArray.has(randomWord) && !extraWords.has(randomWord)) {
@@ -288,11 +254,7 @@ function SentenceBuilderPage({ lessonType }: LessonProps) {
             setJustGotCorrectAnswer(null);
         } else {
             const userAnswer = userCurrentResponse.map((obj) => obj.word);
-            const realAnswer = await smartSplitString(
-                reverseTranslate
-                    ? currentSentence?.contents.story ?? ''
-                    : currentSentence?.contents.translation ?? ''
-            );
+            const realAnswer = await smartSplitString(reverseTranslate ? currentSentence?.contents.story ?? '' : currentSentence?.contents.translation ?? '');
 
             if (userAnswer.length === 0) {
                 return;
@@ -331,72 +293,37 @@ function SentenceBuilderPage({ lessonType }: LessonProps) {
         <div className="hanzi-review-wrapper">
             <div className="hanzi-review-info-div">
                 <p>
-                    <FontAwesomeIcon
-                        icon={faArrowLeft}
-                        className="hanzi-review-space-right"
-                    />
+                    <FontAwesomeIcon icon={faArrowLeft} className="hanzi-review-space-right" />
                     {EN_UC_REVIEW_HEADER}
                 </p>
                 <div className="hanzi-review-streak-div">
-                    <FontAwesomeIcon
-                        icon={faFire}
-                        className={`hanzi-review-streak-icon ${fireAnimationName}`}
-                    />
-                    <span className="hanzi-review-streak-text">
-                        {userCorrectStreak.toString()}
-                    </span>
+                    <FontAwesomeIcon icon={faFire} className={`hanzi-review-streak-icon ${fireAnimationName}`} />
+                    <span className="hanzi-review-streak-text">{userCorrectStreak.toString()}</span>
                 </div>
             </div>
             <div className="hanzi-review-details-div">
-                <h1 className="hanzi-review-bigger-h1">
-                    {reverseTranslate
-                        ? currentSentence?.contents.translation
-                        : currentSentence?.contents.story}
-                </h1>
-                <h3>
-                    {reverseTranslate ? '' : currentSentence?.contents.pinyin}
-                </h3>
+                <h1 className="hanzi-review-bigger-h1">{reverseTranslate ? currentSentence?.contents.translation : currentSentence?.contents.story}</h1>
+                <h3>{reverseTranslate ? '' : currentSentence?.contents.pinyin}</h3>
             </div>
 
             <div className="hanzi-review-word-bank-div">
                 {currentWordBank.map((word, index) => (
                     <div
                         key={index}
-                        className={`hanzi-review-word-bank-box ${
-                            userCurrentResponse.find(
-                                (obj) => obj.index === index
-                            )
-                                ? 'hanzi-review-word-bank-box-used'
-                                : ''
-                        } `}
+                        className={`hanzi-review-word-bank-box ${userCurrentResponse.find((obj) => obj.index === index) ? 'hanzi-review-word-bank-box-used' : ''} `}
                         onClick={() => addWordToUserAnswer(word, index)}>
                         {word}
                     </div>
                 ))}
             </div>
             <form onSubmit={handleSubmit} className="hanzi-review-answer-bar">
-                <button
-                    type="button"
-                    onClick={() => setUserCurrentResponse([])}>
+                <button type="button" onClick={() => setUserCurrentResponse([])}>
                     {'Clear'}
                 </button>
                 <div className="hanzi-review-answer-bar-text">
-                    <p
-                        className={
-                            justGotCorrectAnswer
-                                ? 'correct-answer'
-                                : justGotCorrectAnswer === false
-                                ? 'wrong-answer'
-                                : ''
-                        }>
-                        {userCurrentResponse.map((obj) => obj.word).join(' ')}
-                    </p>
+                    <p className={justGotCorrectAnswer ? 'correct-answer' : justGotCorrectAnswer === false ? 'wrong-answer' : ''}>{userCurrentResponse.map((obj) => obj.word).join(' ')}</p>
                 </div>
-                <button type="submit">
-                    {justGotCorrectAnswer
-                        ? EN_UC_CONTINUE_HEADER
-                        : EN_UC_SUBMIT_HEADER}
-                </button>
+                <button type="submit">{justGotCorrectAnswer ? EN_UC_CONTINUE_HEADER : EN_UC_SUBMIT_HEADER}</button>
             </form>
             <div className="hanzi-review-word-bank-bottom"></div>
         </div>

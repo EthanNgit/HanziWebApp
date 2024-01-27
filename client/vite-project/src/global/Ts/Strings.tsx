@@ -37,8 +37,7 @@ export const EN_UC_LEVEL_OF_MASTERY = (hskLevel: number) => {
 
 // Page not found page
 export const EN_UC_PNC_HEADER = 'Page not found';
-export const EN_UC_PNC_DESCRIPTION =
-    'You may have mistyped the address or the page may have moved.';
+export const EN_UC_PNC_DESCRIPTION = 'You may have mistyped the address or the page may have moved.';
 export const EN_UC_PNC_RETURN = 'Return home';
 
 // Intro page
@@ -78,8 +77,7 @@ export const EN_UC_REVIEW_HANZI_EMPTY_HEADER = 'No hanzi to review';
 export const EN_UC_LEARN_HANZI_DYNAMIC_HEADER = (hskLevel: number) => {
     return `Learn HSK ${hskLevel}`;
 };
-export const EN_UC_REVIEW_HANZI_DESCRIPTION =
-    'Reviews words that you have not mastered yet. Review works on spaced repitition.';
+export const EN_UC_REVIEW_HANZI_DESCRIPTION = 'Reviews words that you have not mastered yet. Review works on spaced repitition.';
 export const EN_UC_ALL_LESSONS_HEADER = 'All lessons';
 export const EN_UC_LESSONS_DYNAMIC_HEADER = (hskLevel: number) => {
     return `HSK ${hskLevel} lessons`;
@@ -97,14 +95,12 @@ export const EN_LC_STROKES_HEADER = 'strokes';
 
 // Review page
 export const EN_UC_HANZI_INPUT_HINT = 'Enter pinyin or hanzi';
-export const EN_UC_HANZI_REDIRECTION_DESCRIPTION =
-    'Continue to the review? You will be questioned on the hanzi.';
+export const EN_UC_HANZI_REDIRECTION_DESCRIPTION = 'Continue to the review? You will be questioned on the hanzi.';
 
 // Practice page
 export const EN_UC_PINYIN_PRACTICE_HEADER = 'Pinyin to hanzi practice';
 export const EN_UC_CHARACTER_PRACTICE_HEADER = 'Hanzi to pinyin practice';
-export const EN_UC_TRADITIONAL_PRACTICE_HEADER =
-    'Traditional character practice';
+export const EN_UC_TRADITIONAL_PRACTICE_HEADER = 'Traditional character practice';
 
 // Finish lesson button
 export const EN_UC_FINISH_LESSON_HEADER = 'Finish lesson';
@@ -116,25 +112,19 @@ export const EN_UP_HSK_TO_PRACTICE_HEADER = 'HSK to practice';
 // APIS
 export const API_LOGIN_URL = 'http://localhost:3001/api/login';
 export const API_REGISTER_URL = 'http://localhost:3001/api/register';
-export const API_PASSWORD_RESET_URL =
-    'http://localhost:3001/api/reset/reset-password';
-export const API_PASSWORD_RESET_SEND_URL =
-    'http://localhost:3001/api/reset/send';
-export const API_PASSWORD_RESET_VERIFY_URL =
-    'http://localhost:3001/api/reset/verify';
-export const API_COMPLETED_LESSONS_URL =
-    'http://localhost:3001/api/stats/completed-lessons';
+export const API_PASSWORD_RESET_URL = 'http://localhost:3001/api/reset/reset-password';
+export const API_PASSWORD_RESET_SEND_URL = 'http://localhost:3001/api/reset/send';
+export const API_PASSWORD_RESET_VERIFY_URL = 'http://localhost:3001/api/reset/verify';
+export const API_COMPLETED_LESSONS_URL = 'http://localhost:3001/api/stats/completed-lessons';
 export const API_GET_LESSONS_URL = 'http://localhost:3001/api/lessons';
-export const API_CALCULATE_LEVEL_URL =
-    'http://localhost:3001/api/stats/calculate-level';
+export const API_CALCULATE_LEVEL_URL = 'http://localhost:3001/api/stats/calculate-level';
 export const API_USER_STATS_URL = (userID: number) => {
     return `http://localhost:3001/api/stats/${userID}`;
 };
 export const API_TTS_URL = 'http://localhost:3001/api/tts';
-export const API_PRACTICE_CALCULATE_HANZI_COUNT_URL =
-    'http://localhost:3001/api/hanzi/get/practice-hanzi/min-weight';
-export const API_PRACTICE_BOOKMARK_CALCULATE_HANZI_COUNT_URL =
-    'http://localhost:3001/api/hanzi/get/bookmark-practice-hanzi/min-weight';
+export const API_PRACTICE_CALCULATE_HANZI_COUNT_URL = 'http://localhost:3001/api/hanzi/get/practice-hanzi/min-weight';
+export const API_PRACTICE_BOOKMARK_CALCULATE_HANZI_COUNT_URL = 'http://localhost:3001/api/hanzi/get/bookmark-practice-hanzi/min-weight';
+export const API_PRACTICE_MEASURE_COUNT_URL = 'http://localhost:3001/api/hanzi/get/measure-words/min-weight';
 
 // Nav endpoints
 export const STRING_TO_URL = (urlName: string) => {

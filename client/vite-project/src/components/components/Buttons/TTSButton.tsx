@@ -1,23 +1,14 @@
 import { faVolumeHigh } from '@fortawesome/free-solid-svg-icons/faVolumeHigh';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
-import React, {
-    forwardRef,
-    useEffect,
-    useImperativeHandle,
-    useRef,
-    useState,
-} from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { API_TTS_URL } from '../../../global/Ts/Strings';
 
 interface TextToSpeechProps {
     text: string;
 }
 
-function TTSButton(
-    { text }: TextToSpeechProps,
-    ref: React.Ref<unknown> | undefined
-) {
+function TTSButton({ text }: TextToSpeechProps, ref: React.Ref<unknown> | undefined) {
     const [audioBuffer, setAudioBuffer] = useState<{
         buffer: ArrayBuffer | null;
         timestamp: number;
@@ -52,11 +43,7 @@ function TTSButton(
                     await audioElement.play();
                 } else {
                     // Audio file has not been played yet; get it.
-                    const response = await axios.post(
-                        API_TTS_URL,
-                        { text },
-                        { responseType: 'arraybuffer' }
-                    );
+                    const response = await axios.post(API_TTS_URL, { text }, { responseType: 'arraybuffer' });
                     const newAudioBuffer = {
                         buffer: response.data,
                         timestamp: Date.now(),
@@ -111,14 +98,7 @@ function TTSButton(
         forceClick: playAudio,
     }));
 
-    return (
-        <FontAwesomeIcon
-            icon={faVolumeHigh}
-            className="cn-listen-icon"
-            onClick={playAudio}
-            ref={iconRef}
-        />
-    );
+    return <FontAwesomeIcon icon={faVolumeHigh} className="cn-listen-icon" onClick={playAudio} ref={iconRef} />;
 }
 
 export default forwardRef(TTSButton);

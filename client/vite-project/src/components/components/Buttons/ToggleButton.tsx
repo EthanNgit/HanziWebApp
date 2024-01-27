@@ -17,14 +17,10 @@ function ToggleButton({ buttonNames, onToggle }: ToggleButtonProps) {
 
     return (
         <div className="toggle-button-container">
-            <button
-                onClick={handleToggle}
-                className={`toggle-button ${isToggled ? 'selected' : ''}`}>
+            <button onClick={handleToggle} className={`toggle-button ${isToggled ? 'selected' : ''}`}>
                 {buttonNames?.buttonOne ? buttonNames.buttonOne : 'Option one'}
             </button>
-            <button
-                onClick={handleToggle}
-                className={`toggle-button ${isToggled ? '' : 'selected'}`}>
+            <button onClick={handleToggle} className={`toggle-button ${isToggled ? '' : 'selected'}`}>
                 {buttonNames?.buttonTwo ? buttonNames.buttonTwo : 'Option two'}
             </button>
         </div>

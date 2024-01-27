@@ -3,14 +3,7 @@ import '../../styles/Learn/HanziReview.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrayShuffler } from '../../../global/Ts/ArrayShuffler';
 import { Validator } from '../../../global/Ts/Validator';
-import {
-    EN_LC_LOADING_TEXT,
-    EN_UC_CONTINUE_HEADER,
-    EN_UC_HANZI_INPUT_HINT,
-    EN_UC_HINT_HEADER,
-    EN_UC_REVIEW_HEADER,
-    EN_UC_SUBMIT_HEADER,
-} from '../../../global/Ts/Strings';
+import { EN_LC_LOADING_TEXT, EN_UC_CONTINUE_HEADER, EN_UC_HANZI_INPUT_HINT, EN_UC_HINT_HEADER, EN_UC_REVIEW_HEADER, EN_UC_SUBMIT_HEADER } from '../../../global/Ts/Strings';
 import axios from 'axios';
 import { AuthContext } from '../../../helpers/AuthContext';
 import RedirectionNotification from '../../../components/components/Boxes/RedirectionNotification';
@@ -22,37 +15,27 @@ function HanziReview() {
     const { authState } = useContext(AuthContext);
     const { state: learningState } = location;
     const [learningList, setLearningList] = useState<Set<HanziRow>>(new Set());
-    const [shuffledLearningList, setShuffledLearningList] = useState<
-        HanziRow[]
-    >([]);
+    const [shuffledLearningList, setShuffledLearningList] = useState<HanziRow[]>([]);
     const [currentReviewItem, setCurrentReviewItem] = useState<HanziRow>();
     const [studiedCharacters, setStudiedCharacters] = useState<HanziRow[]>();
 
     // 1: Sentence with blanks 2: Sentence translation 3: Sentence without blanks
-    const [currentReviewSentences, setCurrentReviewSentences] = useState<
-        [string, string, string]
-    >(['loading...', 'loading...', 'loading...']);
+    const [currentReviewSentences, setCurrentReviewSentences] = useState<[string, string, string]>(['loading...', 'loading...', 'loading...']);
 
     const [isSRSReview, setIsSRSReview] = useState<boolean>(false);
     const [askedToLeave, setAskedToLeave] = useState<boolean | null>(false);
     const [inputValue, setInputValue] = useState('');
     const [isUsingHint, setIsUsingHint] = useState<boolean>(false);
-    const [justGotCorrectAnswer, setJustGotCorrectAnswer] = useState<
-        boolean | null
-    >(null);
+    const [justGotCorrectAnswer, setJustGotCorrectAnswer] = useState<boolean | null>(null);
     const [canStopTimeout, stopTimeout] = useState<boolean | null>(null);
     const [canRedirect, setCanRedirect] = useState<boolean>(false);
-    const [redirectionOption, setRedirectionOption] = useState<boolean | null>(
-        null
-    );
+    const [redirectionOption, setRedirectionOption] = useState<boolean | null>(null);
 
     const navigate = useNavigate();
 
     useEffect(() => {
         if (learningState && learningState.learningList !== undefined) {
-            const idsArr = learningState.learningList.map(
-                (obj: { id: any }) => obj.id
-            );
+            const idsArr = learningState.learningList.map((obj: { id: any }) => obj.id);
             console.log(idsArr);
 
             axios
@@ -77,8 +60,7 @@ function HanziReview() {
         if (learningList) {
             const arrayShuffler = new ArrayShuffler();
             const learningListAsArray = Array.from(learningList);
-            const shuffledArray =
-                arrayShuffler.shuffleArray(learningListAsArray);
+            const shuffledArray = arrayShuffler.shuffleArray(learningListAsArray);
 
             if (shuffledArray) {
                 setShuffledLearningList(shuffledArray);
@@ -96,16 +78,9 @@ function HanziReview() {
         const randomIndex = Math.floor(Math.random() * retrievedData.length);
 
         const randomSentence = retrievedData[randomIndex]?.sentence;
-        const blankSentence = randomSentence?.replaceAll(
-            currentReviewItem?.simplified,
-            '＿＿'
-        );
+        const blankSentence = randomSentence?.replaceAll(currentReviewItem?.simplified, '＿＿');
 
-        setCurrentReviewSentences([
-            blankSentence,
-            retrievedData[randomIndex]?.translation,
-            retrievedData[randomIndex]?.sentence,
-        ]);
+        setCurrentReviewSentences([blankSentence, retrievedData[randomIndex]?.translation, retrievedData[randomIndex]?.sentence]);
     }, [currentReviewItem]);
 
     const setReviewData = (sll: boolean) => {
@@ -154,15 +129,9 @@ function HanziReview() {
         if (currentReviewItem) {
             const inputValidator = new Validator();
             const normalizedInput = inputValidator.normalizeString(inputValue);
-            const normalizedPinyin = inputValidator.normalizeString(
-                currentReviewItem.pinyin
-            );
+            const normalizedPinyin = inputValidator.normalizeString(currentReviewItem.pinyin);
 
-            if (
-                normalizedInput === normalizedPinyin ||
-                inputValue === currentReviewItem.simplified ||
-                inputValue === currentReviewItem.traditional
-            ) {
+            if (normalizedInput === normalizedPinyin || inputValue === currentReviewItem.simplified || inputValue === currentReviewItem.traditional) {
                 console.log('pass');
 
                 handleCorrectAnswer();
@@ -238,31 +207,15 @@ function HanziReview() {
         <div className="hanzi-review-wrapper">
             <div className="hanzi-review-info-div">
                 <p>
-                    <FontAwesomeIcon
-                        icon={faArrowLeft}
-                        onClick={leaveReview}
-                        className="hanzi-review-space-right"
-                    />
+                    <FontAwesomeIcon icon={faArrowLeft} onClick={leaveReview} className="hanzi-review-space-right" />
                     {EN_UC_REVIEW_HEADER}
                 </p>
-                <p>
-                    {`${learningList?.size - shuffledLearningList?.length}/${
-                        learningList?.size
-                    }`}
-                </p>
+                <p>{`${learningList?.size - shuffledLearningList?.length}/${learningList?.size}`}</p>
             </div>
 
-            {!justGotCorrectAnswer ? (
-                <h1>{currentReviewSentences[0] ?? EN_LC_LOADING_TEXT}</h1>
-            ) : (
-                <h1> {currentReviewSentences[2] ?? EN_LC_LOADING_TEXT} </h1>
-            )}
+            {!justGotCorrectAnswer ? <h1>{currentReviewSentences[0] ?? EN_LC_LOADING_TEXT}</h1> : <h1> {currentReviewSentences[2] ?? EN_LC_LOADING_TEXT} </h1>}
             <h3>{currentReviewSentences[1] ?? EN_LC_LOADING_TEXT}</h3>
-            {isUsingHint && (
-                <h4 className="hanzi-review-hint">
-                    {currentReviewItem?.definition}
-                </h4>
-            )}
+            {isUsingHint && <h4 className="hanzi-review-hint">{currentReviewItem?.definition}</h4>}
             <form onSubmit={handleSubmit} className="hanzi-review-answer-bar">
                 <button
                     type="button"
@@ -277,29 +230,14 @@ function HanziReview() {
                     onChange={handleInputChange}
                     spellCheck={false}
                     placeholder={EN_UC_HANZI_INPUT_HINT}
-                    className={
-                        justGotCorrectAnswer === true
-                            ? 'hanzi-correct-color'
-                            : justGotCorrectAnswer === false
-                            ? 'hanzi-wrong-color'
-                            : ''
-                    }
+                    className={justGotCorrectAnswer === true ? 'hanzi-correct-color' : justGotCorrectAnswer === false ? 'hanzi-wrong-color' : ''}
                 />
-                <button type="submit">
-                    {justGotCorrectAnswer
-                        ? EN_UC_CONTINUE_HEADER
-                        : EN_UC_SUBMIT_HEADER}
-                </button>
+                <button type="submit">{justGotCorrectAnswer ? EN_UC_CONTINUE_HEADER : EN_UC_SUBMIT_HEADER}</button>
             </form>
             {isSRSReview ? (
                 <>
                     {canRedirect && (
-                        <RedirectionNotification
-                            header="Review complete"
-                            description="The hanzi reviewed will be queued for review again."
-                            oneOption={true}
-                            selectedOption={updateRedirectionOption}
-                        />
+                        <RedirectionNotification header="Review complete" description="The hanzi reviewed will be queued for review again." oneOption={true} selectedOption={updateRedirectionOption} />
                     )}
                 </>
             ) : (

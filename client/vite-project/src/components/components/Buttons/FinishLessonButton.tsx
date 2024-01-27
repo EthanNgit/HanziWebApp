@@ -1,11 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import {
-    API_COMPLETED_LESSONS_URL,
-    NAV_LEARN_URL,
-    EN_UC_FINISH_LESSON_HEADER,
-} from '../../../global/Ts/Strings';
+import { API_COMPLETED_LESSONS_URL, NAV_LEARN_URL, EN_UC_FINISH_LESSON_HEADER } from '../../../global/Ts/Strings';
 
 interface FinishLessonProps {
     userId: number;
@@ -16,16 +12,14 @@ function FinishLessonButton({ userId, lessonId }: FinishLessonProps) {
     const navigate = useNavigate();
 
     const updateLessonsCompleted = async () => {
-        await axios
-            .post(API_COMPLETED_LESSONS_URL, { userId, lessonId })
-            .then((response) => {
-                if (response.data.error) {
-                    alert(response.data.error);
-                } else {
-                    console.log(response.data);
-                    navigate(NAV_LEARN_URL, { replace: true });
-                }
-            });
+        await axios.post(API_COMPLETED_LESSONS_URL, { userId, lessonId }).then((response) => {
+            if (response.data.error) {
+                alert(response.data.error);
+            } else {
+                console.log(response.data);
+                navigate(NAV_LEARN_URL, { replace: true });
+            }
+        });
     };
 
     return (
@@ -58,10 +52,7 @@ function FinishLessonButton({ userId, lessonId }: FinishLessonProps) {
         }
         `}
             </style>
-            <button
-                className="button-19"
-                role="button"
-                onClick={updateLessonsCompleted}>
+            <button className="button-19" role="button" onClick={updateLessonsCompleted}>
                 {EN_UC_FINISH_LESSON_HEADER}
             </button>
         </div>

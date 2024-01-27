@@ -9,22 +9,14 @@ import axios from 'axios';
 import { Validator } from '../../global/Ts/Validator';
 import ToTopButton from '../../components/components/Buttons/ToTopButton';
 import '../../global/Interfaces/IHanziRow';
-import {
-    EN_UC_HANZI_INPUT_HINT,
-    EN_UC_HSK_HEADER,
-    EN_UC_OPTIONS_HEADER,
-} from '../../global/Ts/Strings';
+import { EN_UC_HANZI_INPUT_HINT, EN_UC_HSK_HEADER, EN_UC_OPTIONS_HEADER } from '../../global/Ts/Strings';
 import { HanziContext } from '../../helpers/HanziContext';
 
 function SearchPage() {
     const navigate = useNavigate();
     const allHanziContext = useContext(HanziContext);
     const { authState } = useContext(AuthContext);
-    const {
-        visible: optionsVisible,
-        setVisible: setOptionsVisible,
-        ref: optionsRef,
-    } = useOutsideClickAlert(false);
+    const { visible: optionsVisible, setVisible: setOptionsVisible, ref: optionsRef } = useOutsideClickAlert(false);
     const [items, setItems] = useState<HanziRow[]>([]);
     const [val, setVal] = useState('');
     const validator = new Validator();
@@ -61,12 +53,7 @@ function SearchPage() {
     const searchHanzi = (e: any) => {
         if (e.key === 'Enter') {
             const foundItem = items.find((item) => {
-                if (
-                    item.simplified === val ||
-                    item.traditional === val ||
-                    validator.normalizeString(item.pinyin) === val ||
-                    item.pinyin === val
-                ) {
+                if (item.simplified === val || item.traditional === val || validator.normalizeString(item.pinyin) === val || item.pinyin === val) {
                     return true;
                 }
             });
@@ -89,13 +76,8 @@ function SearchPage() {
                         setVal(e.target.value);
                     }}
                 />
-                <button
-                    className="search-search-settings-btn"
-                    onClick={() =>
-                        setOptionsVisible((optionsVisible) => !optionsVisible)
-                    }>
-                    {EN_UC_OPTIONS_HEADER}{' '}
-                    <FontAwesomeIcon icon={faCaretDown} />
+                <button className="search-search-settings-btn" onClick={() => setOptionsVisible((optionsVisible) => !optionsVisible)}>
+                    {EN_UC_OPTIONS_HEADER} <FontAwesomeIcon icon={faCaretDown} />
                 </button>
             </div>
 
@@ -104,61 +86,32 @@ function SearchPage() {
                     <div className="hsk-levels">
                         <form>
                             <label>
-                                <input
-                                    type="radio"
-                                    name="hsk-level"
-                                    value="HSK LEVEL"
-                                    defaultChecked
-                                />
+                                <input type="radio" name="hsk-level" value="HSK LEVEL" defaultChecked />
                                 All HSK <span className="custom-radio"></span>
                             </label>
                             <h1>Filter HSK</h1>
                             <label>
-                                <input
-                                    type="radio"
-                                    name="hsk-level"
-                                    value="HSK 1"
-                                />
+                                <input type="radio" name="hsk-level" value="HSK 1" />
                                 HSK 1 <span className="custom-radio"></span>
                             </label>
                             <label>
-                                <input
-                                    type="radio"
-                                    name="hsk-level"
-                                    value="HSK 2"
-                                />
+                                <input type="radio" name="hsk-level" value="HSK 2" />
                                 HSK 2 <span className="custom-radio"></span>
                             </label>
                             <label>
-                                <input
-                                    type="radio"
-                                    name="hsk-level"
-                                    value="HSK 3"
-                                />
+                                <input type="radio" name="hsk-level" value="HSK 3" />
                                 HSK 3 <span className="custom-radio"></span>
                             </label>
                             <label>
-                                <input
-                                    type="radio"
-                                    name="hsk-level"
-                                    value="HSK 4"
-                                />
+                                <input type="radio" name="hsk-level" value="HSK 4" />
                                 HSK 4 <span className="custom-radio"></span>
                             </label>
                             <label>
-                                <input
-                                    type="radio"
-                                    name="hsk-level"
-                                    value="HSK 5"
-                                />
+                                <input type="radio" name="hsk-level" value="HSK 5" />
                                 HSK 5 <span className="custom-radio"></span>
                             </label>
                             <label>
-                                <input
-                                    type="radio"
-                                    name="hsk-level"
-                                    value="HSK 6"
-                                />
+                                <input type="radio" name="hsk-level" value="HSK 6" />
                                 HSK 6 <span className="custom-radio"></span>
                             </label>
                         </form>
@@ -179,9 +132,7 @@ function SearchPage() {
                                     navigate(`/hanzi/${item.simplified}`);
                                 }}>
                                 {item.simplified}
-                                {item.traditional != null
-                                    ? ' / ' + item.traditional
-                                    : ''}
+                                {item.traditional != null ? ' / ' + item.traditional : ''}
                                 <p>{item.pinyin}</p>
                             </div>
                         ))}

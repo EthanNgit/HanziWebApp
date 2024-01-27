@@ -17,9 +17,7 @@ function StoryViewPage() {
     return (
         <div className="article-wrapper">
             <div className="article-title-div">
-                <h1 className="article-title">
-                    {story?.title.translatedTitle}
-                </h1>
+                <h1 className="article-title">{story?.title.translatedTitle}</h1>
                 <h3 className="article-subtitle-div">{story?.title.title}</h3>
             </div>
             <div className="article-main-contents">
@@ -31,19 +29,11 @@ function StoryViewPage() {
                 </div>
                 <div className="article-body-wrapper">
                     <div className="article-body article-body-story-font">
-                        <CharacterAnnotation
-                            chineseWords={story?.contents.story ?? ''}
-                        />
-                        <button
-                            className="translation-button"
-                            onClick={() =>
-                                setShowTranslation(!showTranslation)
-                            }>
+                        <CharacterAnnotation chineseWords={story?.contents.story ?? ''} />
+                        <button className="translation-button" onClick={() => setShowTranslation(!showTranslation)}>
                             Show translation
                         </button>
-                        <div className="translated-contents">
-                            {showTranslation && story?.contents.translation}
-                        </div>
+                        <div className="translated-contents">{showTranslation && story?.contents.translation}</div>
                     </div>
                 </div>
                 <div className="article-ads-wrapper">

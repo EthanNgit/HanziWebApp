@@ -4,6 +4,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import PinyinLesson from './Learn/Lessons/PinyinLesson';
 import NumbersLesson from './Learn/Lessons/NumberLesson';
 import TimeLesson from './Learn/Lessons/TimeLesson';
+import MoneyLesson from './Learn/Lessons/MoneyLesson';
 
 function LessonPage() {
     const { lesson } = useParams();
@@ -14,6 +15,7 @@ function LessonPage() {
         ['pinyin', PinyinLesson],
         ['numbers', NumbersLesson],
         ['time', TimeLesson],
+        ['money', MoneyLesson],
     ]);
 
     const LessonComponent = lessonMap.get(lesson ? lesson : '');

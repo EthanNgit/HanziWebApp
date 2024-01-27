@@ -14,8 +14,7 @@ export class Validator {
 
     validatePassword(password: string): boolean {
         // Password regex (special character, uppercase, lowercase, number).
-        var validRegex =
-            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        var validRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
         return password.match(validRegex) ? true : false;
     }

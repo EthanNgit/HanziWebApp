@@ -9,18 +9,10 @@ interface MultiSelectDropdownProps {
     selectedOptions: (newOptions: string[]) => void;
 }
 
-function MultiSelectDropdownButton({
-    dropdownOptions,
-    selectedOptions,
-}: MultiSelectDropdownProps) {
-    const [selectedValues, setSelectedValues] = useState<
-        { value: string; label: string }[]
-    >([]);
+function MultiSelectDropdownButton({ dropdownOptions, selectedOptions }: MultiSelectDropdownProps) {
+    const [selectedValues, setSelectedValues] = useState<{ value: string; label: string }[]>([]);
 
-    const handleChange = (
-        selectedValues: MultiValue<{ value: string; label: string }>,
-        actionMeta: ActionMeta<{ value: string; label: string }>
-    ) => {
+    const handleChange = (selectedValues: MultiValue<{ value: string; label: string }>, actionMeta: ActionMeta<{ value: string; label: string }>) => {
         if (selectedValues) {
             const values = selectedValues as { value: string; label: string }[];
             setSelectedValues(values);

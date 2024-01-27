@@ -5,6 +5,7 @@ import '../../styles/Boxes/RedirectionNotification.css';
 import {
     API_PRACTICE_BOOKMARK_CALCULATE_HANZI_COUNT_URL,
     API_PRACTICE_CALCULATE_HANZI_COUNT_URL,
+    API_PRACTICE_MEASURE_COUNT_URL,
     EN_UC_CONTINUE_HEADER,
     EN_UC_HANZI_DYNAMIC_HEADER,
     EN_UP_HSK_TO_PRACTICE_HEADER,
@@ -68,21 +69,27 @@ function HanziSelectionNotification({
         setHSKCalculationTimeout(hskTimeout);
     }, [selectedHSKLevels]);
 
+    const getPath = (route: string): string => {
+        switch (route) {
+            case 'bookmarked':
+                return API_PRACTICE_BOOKMARK_CALCULATE_HANZI_COUNT_URL;
+            case 'measure':
+                return API_PRACTICE_MEASURE_COUNT_URL;
+            default:
+                return API_PRACTICE_CALCULATE_HANZI_COUNT_URL;
+        }
+    };
+
     const calculateTotalHanzi = () => {
         if (!selectedHSKLevels || selectedHSKLevels.length === 0) {
             return;
         }
 
         axios
-            .post(
-                navRoute === 'bookmarked'
-                    ? API_PRACTICE_BOOKMARK_CALCULATE_HANZI_COUNT_URL
-                    : API_PRACTICE_CALCULATE_HANZI_COUNT_URL,
-                {
-                    userId: authState.id,
-                    levels: selectedHSKLevels,
-                }
-            )
+            .post(getPath(navRoute ?? ''), {
+                userId: authState.id,
+                levels: selectedHSKLevels,
+            })
             .then((response) => {
                 if (response.data.error) {
                     alert(response.data.error);

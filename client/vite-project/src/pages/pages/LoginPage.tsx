@@ -31,11 +31,9 @@ function LoginPage() {
     const navigate = useNavigate();
     const { setAuthState } = useContext(AuthContext);
     const [showResetPassword, setShowResetPassword] = useState<boolean>(false);
-    const [showSentCodeFirstTime, setShowSentCodeFirstTime] =
-        useState<boolean>(true);
+    const [showSentCodeFirstTime, setShowSentCodeFirstTime] = useState<boolean>(true);
     const [showPasswordReset, setShowPasswordReset] = useState<boolean>(false);
-    const [isCodeButtonDisabled, setIsCodeButtonDisabled] =
-        useState<boolean>(false);
+    const [isCodeButtonDisabled, setIsCodeButtonDisabled] = useState<boolean>(false);
     const [validEmail, setValidEmail] = useState<string>();
     const [validOTP, setValidOTP] = useState<string>();
     const [passwordForReset, setPasswordForReset] = useState('');
@@ -116,22 +114,20 @@ function LoginPage() {
             return;
         }
 
-        axios
-            .post(API_PASSWORD_RESET_VERIFY_URL, { email, otp })
-            .then((response) => {
-                if (response.data.error) {
-                    alert(response.data.error);
-                    console.log('code is not good');
-                    setShowPasswordReset(false);
-                    setValidEmail(email);
-                    setValidOTP('');
-                } else {
-                    console.log('code is correct');
-                    setShowPasswordReset(true);
-                    setValidEmail(email);
-                    setValidOTP(otp);
-                }
-            });
+        axios.post(API_PASSWORD_RESET_VERIFY_URL, { email, otp }).then((response) => {
+            if (response.data.error) {
+                alert(response.data.error);
+                console.log('code is not good');
+                setShowPasswordReset(false);
+                setValidEmail(email);
+                setValidOTP('');
+            } else {
+                console.log('code is correct');
+                setShowPasswordReset(true);
+                setValidEmail(email);
+                setValidOTP(otp);
+            }
+        });
     };
 
     const handleReset = (e: any) => {
@@ -145,10 +141,7 @@ function LoginPage() {
             return;
         }
 
-        if (
-            !validator.validatePassword(passwordForReset) ||
-            !validator.validatePassword(passwordForResetVerify)
-        ) {
+        if (!validator.validatePassword(passwordForReset) || !validator.validatePassword(passwordForResetVerify)) {
             console.log('Password not sufficient');
             // Give incorrect password format error
             return;
@@ -204,49 +197,21 @@ function LoginPage() {
                     <form action="" noValidate onSubmit={handleSubmit}>
                         <h1 className="login-page-h1">{EN_UC_LOGIN_HEADER}</h1>
                         <div className="login-page-input-box">
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="Email"
-                                value={mainEmail}
-                                onChange={handleEmailChange}
-                                required
-                            />
-                            <FontAwesomeIcon
-                                icon={faUser}
-                                className="login-page-icon"
-                            />
+                            <input type="email" name="email" placeholder="Email" value={mainEmail} onChange={handleEmailChange} required />
+                            <FontAwesomeIcon icon={faUser} className="login-page-icon" />
                         </div>
                         <div className="login-page-input-box">
-                            <input
-                                type="password"
-                                name="password"
-                                placeholder="Password"
-                                value={mainPassword}
-                                onChange={handleMainPasswordChange}
-                                required
-                            />
-                            <FontAwesomeIcon
-                                icon={faLock}
-                                className="login-page-icon"
-                            />
+                            <input type="password" name="password" placeholder="Password" value={mainPassword} onChange={handleMainPasswordChange} required />
+                            <FontAwesomeIcon icon={faLock} className="login-page-icon" />
                         </div>
                         <div className="login-page-sub-buttons">
                             <div className="login-page-remember-me">
                                 <label>
-                                    <input type="checkbox" name="rememberMe" />{' '}
-                                    {EN_UC_REMEMBER_ME}
+                                    <input type="checkbox" name="rememberMe" /> {EN_UC_REMEMBER_ME}
                                 </label>
                             </div>
                             <div className="login-page-forgot-password">
-                                <label
-                                    className="login-page-reset-link"
-                                    onClick={() =>
-                                        setShowResetPassword(
-                                            (showResetPassword) =>
-                                                !showResetPassword
-                                        )
-                                    }>
+                                <label className="login-page-reset-link" onClick={() => setShowResetPassword((showResetPassword) => !showResetPassword)}>
                                     {EN_UC_FORGOT_PASSWORD}
                                 </label>
                             </div>
@@ -257,9 +222,7 @@ function LoginPage() {
                         <div className="login-page-login-link">
                             <p>
                                 {EN_UC_NO_ACCOUNT}{' '}
-                                <Link
-                                    to="/register"
-                                    className="login-page-link login-page-login-link">
+                                <Link to="/register" className="login-page-link login-page-login-link">
                                     {EN_UC_REGISTER_HEADER}
                                 </Link>
                             </p>
@@ -271,40 +234,18 @@ function LoginPage() {
                     {showSentCodeFirstTime ? (
                         <>
                             <form action="" noValidate onSubmit={handleCode}>
-                                <h1 className="login-page-h1">
-                                    {EN_UC_RESET_PASSWORD}
-                                </h1>
+                                <h1 className="login-page-h1">{EN_UC_RESET_PASSWORD}</h1>
                                 <div className="login-page-input-box">
-                                    <input
-                                        type="email"
-                                        name="emailForReset"
-                                        placeholder="Email"
-                                        defaultValue={
-                                            validEmail ? String(validEmail) : ''
-                                        }
-                                        required
-                                    />
-                                    <FontAwesomeIcon
-                                        icon={faUser}
-                                        className="login-page-icon"
-                                    />
+                                    <input type="email" name="emailForReset" placeholder="Email" defaultValue={validEmail ? String(validEmail) : ''} required />
+                                    <FontAwesomeIcon icon={faUser} className="login-page-icon" />
                                 </div>
-                                <button
-                                    type="submit"
-                                    className="login-page-login-btn">
+                                <button type="submit" className="login-page-login-btn">
                                     {EN_UC_SEND_CODE}
                                 </button>
                                 <div className="login-page-login-link">
                                     <p>
                                         {EN_UC_KNOW_PASSWORD}{' '}
-                                        <span
-                                            className="login-page-link login-page-login-link"
-                                            onClick={() =>
-                                                setShowResetPassword(
-                                                    (showResetPassword) =>
-                                                        !showResetPassword
-                                                )
-                                            }>
+                                        <span className="login-page-link login-page-login-link" onClick={() => setShowResetPassword((showResetPassword) => !showResetPassword)}>
                                             {EN_UC_LOGIN_HEADER}
                                         </span>
                                     </p>
@@ -314,50 +255,23 @@ function LoginPage() {
                     ) : (
                         <>
                             <form action="" noValidate onSubmit={handleVerify}>
-                                <h1 className="login-page-h1">
-                                    {EN_UC_RESET_PASSWORD}
-                                </h1>
+                                <h1 className="login-page-h1">{EN_UC_RESET_PASSWORD}</h1>
                                 {!showPasswordReset ? (
                                     <>
                                         <div className="login-page-input-box">
-                                            <input
-                                                type="email"
-                                                name="emailForReset"
-                                                placeholder="Email"
-                                                defaultValue={
-                                                    validEmail
-                                                        ? String(validEmail)
-                                                        : ''
-                                                }
-                                                required
-                                            />
-                                            <FontAwesomeIcon
-                                                icon={faUser}
-                                                className="login-page-icon"
-                                            />
+                                            <input type="email" name="emailForReset" placeholder="Email" defaultValue={validEmail ? String(validEmail) : ''} required />
+                                            <FontAwesomeIcon icon={faUser} className="login-page-icon" />
                                         </div>
                                         <div className="login-page-input-box">
-                                            <input
-                                                type="text"
-                                                name="otp"
-                                                placeholder="Verifaction code"
-                                                required
-                                            />
-                                            <FontAwesomeIcon
-                                                icon={faLock}
-                                                className="login-page-icon"
-                                            />
+                                            <input type="text" name="otp" placeholder="Verifaction code" required />
+                                            <FontAwesomeIcon icon={faLock} className="login-page-icon" />
                                         </div>
-                                        <button
-                                            type="submit"
-                                            className="login-page-login-btn">
+                                        <button type="submit" className="login-page-login-btn">
                                             {EN_UC_CONFIRM_HEADER}
                                         </button>
                                         <div className="login-page-login-link">
                                             <p>
-                                                <span
-                                                    className="login-page-link login-page-login-link"
-                                                    onClick={handleCode}>
+                                                <span className="login-page-link login-page-login-link" onClick={handleCode}>
                                                     {EN_UC_RESEND_CODE}
                                                 </span>
                                             </p>
@@ -366,18 +280,8 @@ function LoginPage() {
                                 ) : (
                                     <>
                                         <div className="login-page-input-box">
-                                            <input
-                                                type="password"
-                                                name="passwordForReset"
-                                                placeholder="Password"
-                                                value={passwordForReset}
-                                                onChange={handlePasswordChange}
-                                                required
-                                            />
-                                            <FontAwesomeIcon
-                                                icon={faLock}
-                                                className="login-page-icon"
-                                            />
+                                            <input type="password" name="passwordForReset" placeholder="Password" value={passwordForReset} onChange={handlePasswordChange} required />
+                                            <FontAwesomeIcon icon={faLock} className="login-page-icon" />
                                         </div>
                                         <div className="login-page-input-box">
                                             <input
@@ -385,20 +289,12 @@ function LoginPage() {
                                                 name="passwordForResetVerify"
                                                 placeholder="Confirm password"
                                                 value={passwordForResetVerify}
-                                                onChange={
-                                                    handlePasswordVerifyChange
-                                                }
+                                                onChange={handlePasswordVerifyChange}
                                                 required
                                             />
-                                            <FontAwesomeIcon
-                                                icon={faLock}
-                                                className="login-page-icon"
-                                            />
+                                            <FontAwesomeIcon icon={faLock} className="login-page-icon" />
                                         </div>
-                                        <button
-                                            type="submit"
-                                            className="login-page-login-btn"
-                                            onClick={handleReset}>
+                                        <button type="submit" className="login-page-login-btn" onClick={handleReset}>
                                             {EN_UC_RESET_PASSWORD}
                                         </button>
                                     </>

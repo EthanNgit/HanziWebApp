@@ -2,12 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import '../styles/HomePage.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../helpers/AuthContext';
-import {
-    EN_UC_INTRO_CALL_TO_ACTION_1,
-    EN_UC_INTRO_CALL_TO_ACTION_2,
-    EN_UC_INTRO_SIGN_UP,
-    NAV_DASHBOARD_URL,
-} from '../../global/Ts/Strings';
+import { EN_UC_INTRO_CALL_TO_ACTION_1, EN_UC_INTRO_CALL_TO_ACTION_2, EN_UC_INTRO_SIGN_UP, NAV_DASHBOARD_URL } from '../../global/Ts/Strings';
 
 function HomePage() {
     const navigate = useNavigate();
@@ -22,16 +17,10 @@ function HomePage() {
     return (
         <div className="home-page-contents">
             <div className="home-page-row-one">
-                <h1 className="home-page-call-to-action home-page-call-to-action-one">
-                    {EN_UC_INTRO_CALL_TO_ACTION_1}
-                </h1>
-                <h1 className="home-page-call-to-action">
-                    {EN_UC_INTRO_CALL_TO_ACTION_2}
-                </h1>
+                <h1 className="home-page-call-to-action home-page-call-to-action-one">{EN_UC_INTRO_CALL_TO_ACTION_1}</h1>
+                <h1 className="home-page-call-to-action">{EN_UC_INTRO_CALL_TO_ACTION_2}</h1>
                 <Link to="/register">
-                    <button className="home-page-sign-up-btn">
-                        {EN_UC_INTRO_SIGN_UP}
-                    </button>
+                    <button className="home-page-sign-up-btn">{EN_UC_INTRO_SIGN_UP}</button>
                 </Link>
             </div>
             <div className="home-page-row-two">

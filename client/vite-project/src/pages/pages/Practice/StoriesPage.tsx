@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../styles/Practice/StoriesPage.css';
 import axios from 'axios';
-import {
-    EN_UC_HANZI_INPUT_HINT,
-    STRING_TO_URL,
-} from '../../../global/Ts/Strings';
+import { EN_UC_HANZI_INPUT_HINT, STRING_TO_URL } from '../../../global/Ts/Strings';
 import MultiSelectDropdownButton from '../../../components/components/Buttons/MultiSelectDropdownButton';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -26,40 +23,38 @@ function StoriesPage() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios
-            .get(`http://localhost:3001/api/blocks/stories`)
-            .then((response) => {
-                if (response.data) {
-                    const storyRows: storyRow[] = [];
+        axios.get(`http://localhost:3001/api/blocks/stories`).then((response) => {
+            if (response.data) {
+                const storyRows: storyRow[] = [];
 
-                    for (const row of response.data) {
-                        const parsedContents = JSON.parse(row.contents);
-                        const parsedTitle = JSON.parse(row.title);
-                        const parsedTags = JSON.parse(row.tags);
+                for (const row of response.data) {
+                    const parsedContents = JSON.parse(row.contents);
+                    const parsedTitle = JSON.parse(row.title);
+                    const parsedTags = JSON.parse(row.tags);
 
-                        const transformedData: storyRow = {
-                            id: row.id,
-                            category: row.category,
-                            cover: row.cover,
-                            series: row.series,
-                            title: {
-                                title: parsedTitle.title,
-                                translatedTitle: parsedTitle.translatedTitle,
-                            },
-                            contents: {
-                                story: parsedContents.story,
-                                translation: parsedContents.translation,
-                            },
-                            hskLevel: row.hskLevel,
-                            tags: parsedTags,
-                        };
+                    const transformedData: storyRow = {
+                        id: row.id,
+                        category: row.category,
+                        cover: row.cover,
+                        series: row.series,
+                        title: {
+                            title: parsedTitle.title,
+                            translatedTitle: parsedTitle.translatedTitle,
+                        },
+                        contents: {
+                            story: parsedContents.story,
+                            translation: parsedContents.translation,
+                        },
+                        hskLevel: row.hskLevel,
+                        tags: parsedTags,
+                    };
 
-                        storyRows.push(transformedData);
-                    }
-
-                    setStories(storyRows);
+                    storyRows.push(transformedData);
                 }
-            });
+
+                setStories(storyRows);
+            }
+        });
     }, []);
 
     useEffect(() => {
@@ -100,20 +95,13 @@ function StoriesPage() {
             </div>
             <div className="story-page-contents-wrapper">
                 {stories.map((item) => (
-                    <div
-                        key={item.id}
-                        className="story-grid-container"
-                        data-key={item.id}
-                        onClick={() => navigateToStory(item)}>
+                    <div key={item.id} className="story-grid-container" data-key={item.id} onClick={() => navigateToStory(item)}>
                         <p>{'HSK ' + item.hskLevel + ' difficulty'}</p>
                         <p>{item.title?.translatedTitle}</p>
                         <p>{item.title?.title}</p>
                         <div className="story-read-me">
                             <p>Read story</p>
-                            <FontAwesomeIcon
-                                icon={faArrowRight}
-                                className="story-read-me-icon"
-                            />
+                            <FontAwesomeIcon icon={faArrowRight} className="story-read-me-icon" />
                         </div>
                     </div>
                 ))}

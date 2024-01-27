@@ -29,9 +29,7 @@ function ScrollToButton({ buttonName, targetRef }: ScrollButtonProps) {
         
         `}
             </style>
-            <p
-                className="scroll-button"
-                onClick={scrollToDiv}>{`${buttonName}`}</p>
+            <p className="scroll-button" onClick={scrollToDiv}>{`${buttonName}`}</p>
         </>
     );
 }
