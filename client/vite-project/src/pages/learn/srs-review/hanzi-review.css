@@ -1,0 +1,393 @@
+@import url('../../../global/variables.css');
+
+.hanzi-review-wrapper {
+    width: 90%;
+    height: auto;
+    min-height: 30vh;
+
+    background-image: url('../../../assets/images/bg_circles.svg');
+    background-color: var(--back-two);
+    background-blend-mode: multiply;
+    background-size: 200vh;
+
+    margin: 10vh 5%;
+
+    border-radius: var(--rounded-max) var(--rounded-max) 0 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, var(--text-shadow-val));
+    border: var(--border-thickness-max) solid var(--fore-two);
+    background-color: var(--back-three);
+    color: var(--fore-one);
+    font-family: 'Roboto';
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.hanzi-review-info-div {
+    width: 100%;
+    height: 20%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hanzi-review-info-div p,
+.hanzi-review-streak-div {
+    text-align: end;
+    flex-basis: 50%;
+    padding: 0% 2%;
+
+    font-size: 25px;
+}
+
+.hanzi-review-info-div p:first-child {
+    text-align: start;
+}
+
+.hanzi-review-wrapper h1 {
+    margin-top: 40px;
+    font-family: 'Noto';
+}
+
+.hanzi-review-hint {
+    font-size: 18px;
+    color: var(--acc-two);
+    margin: 0;
+}
+
+.hanzi-review-answer-bar {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.review-hanzi-button-clicked {
+    color: var(--fore-three);
+}
+
+.hanzi-review-answer-bar input {
+    flex-basis: 60%;
+
+    min-height: 50px;
+
+    font-weight: 500;
+    font-size: 25px;
+    text-align: center;
+
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: var(--fore-two);
+}
+
+.hanzi-review-answer-bar-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-basis: 60%;
+    max-height: 50px;
+}
+
+.hanzi-review-answer-bar-text p {
+    font-weight: 500;
+    font-size: 25px;
+    text-align: center;
+}
+
+.hanzi-correct-color {
+    color: var(--confirmation-green) !important;
+}
+
+.hanzi-wrong-color {
+    color: var(--error-red) !important;
+}
+
+.hanzi-correct-background-color {
+    background-color: var(--confirmation-green) !important;
+    cursor: default !important;
+}
+
+.hanzi-wrong-background-color {
+    background-color: var(--error-red) !important;
+    cursor: default !important;
+}
+
+.hanzi-review-answer-bar button {
+    flex-basis: 15%;
+
+    min-height: 50px;
+
+    font-weight: 700;
+    font-size: 20px;
+    text-align: end;
+    padding: 0 2%;
+    text-align: center;
+
+    border: none;
+    background-color: transparent;
+    color: var(--fore-one);
+}
+
+.hanzi-review-space-right {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.hanzi-review-details-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.hanzi-review-details-div h1 {
+    color: var(--acc-one);
+    width: 100%;
+    text-align: center;
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, var(--text-shadow-val));
+}
+
+.hanzi-review-details-div h3 {
+    font-family: 'Noto';
+    width: 100%;
+    text-align: center;
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, var(--text-shadow-val));
+}
+
+.hanzi-review-four-options-div {
+    width: 90%;
+    margin: 1% 5%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; /* Adjust the gap as needed */
+}
+
+.hanzi-review-four-option-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--back-two);
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 30px;
+    border: var(--border-thickness-max) solid var(--fore-two);
+    border-radius: var(--rounded-min);
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, var(--text-shadow-val));
+    font-family: 'Noto';
+}
+
+.hanzi-review-lower-font {
+    font-size: 20px;
+}
+
+.hanzi-review-four-option-item:hover {
+    background-color: var(--back-one);
+}
+
+.hanzi-review-submit-button-disabled,
+.hanzi-review-submit-button-enabled {
+    display: flex;
+    width: 90%;
+    min-height: 60px;
+    margin: 2vh 5%;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--back-two);
+    text-align: center;
+    font-size: 25px;
+    border: var(--border-thickness-max) solid var(--fore-three);
+    color: var(--fore-two);
+    border-radius: var(--rounded-min);
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, var(--text-shadow-val));
+    cursor: default;
+}
+
+.hanzi-review-submit-button-enabled {
+    border: var(--border-thickness-max) solid var(--fore-two);
+    color: var(--fore-one);
+    cursor: pointer;
+}
+
+.hanzi-review-submit-button:hover {
+    background-color: var(--back-one);
+    cursor: pointer;
+}
+
+.hanzi-review-bigger-h1 {
+    font-size: 55px;
+    margin: 0;
+}
+
+.hanzi-review-streak-div {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.hanzi-review-streak-text {
+    font-size: 25px;
+    padding-top: 20%;
+    color: var(--fore-one);
+}
+
+.hanzi-review-streak-icon {
+    scale: 1;
+    margin-right: 1%;
+    color: var(--fore-three);
+}
+
+.hanzi-review-word-bank-div {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 2% 0;
+}
+
+.hanzi-review-word-bank-box {
+    font-size: 22px;
+    background-color: var(--fore-one);
+    color: var(--back-one);
+    padding: 10px;
+    min-width: 30px;
+    text-align: center;
+
+    border-radius: var(--rounded-max);
+    border: var(--border-thickness-max) solid var(--back-two);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, var(--text-shadow-val));
+    cursor: pointer;
+
+    font-family: 'Noto';
+}
+
+.hanzi-review-word-bank-box-used {
+    user-select: none;
+    background-color: var(--back-three);
+    color: var(--back-three);
+    cursor: default;
+}
+
+@media (max-width: 768px) {
+    .hanzi-review-info-div p,
+    .hanzi-review-streak-div {
+        padding: 0% 7%;
+        font-size: 20px;
+    }
+
+    .hanzi-review-wrapper {
+        min-height: 27vh;
+
+        margin: 10vh 1%;
+        width: 98%;
+    }
+
+    .hanzi-review-wrapper h1 {
+        margin-top: 25px;
+        font-size: 35px;
+    }
+
+    .hanzi-review-wrapper h3 {
+        margin-top: 0px;
+        font-size: 20px;
+    }
+
+    .hanzi-review-hint {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .hanzi-review-answer-bar {
+        margin-top: auto;
+    }
+
+    .hanzi-review-answer-bar input {
+        font-size: 20px;
+    }
+
+    .hanzi-review-answer-bar button {
+        font-size: 17px;
+        flex-basis: 20%;
+        padding: 0% 5%;
+    }
+    .hanzi-review-lower-font {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 450px) {
+    .hanzi-review-wrapper h1 {
+        text-align: center;
+    }
+
+    .hanzi-review-answer-bar button {
+        font-size: 20px;
+        flex: 1;
+        width: 100%;
+        padding: 0% 2%;
+    }
+
+    .hanzi-review-answer-bar button:first-child {
+        text-align: left;
+        min-height: 25px;
+        padding-left: 10%;
+        font-size: 17px;
+    }
+
+    .hanzi-review-answer-bar button:last-child {
+        background-color: var(--back-one);
+        min-height: 40px;
+        width: 90%;
+        margin: 2% 5%;
+        margin-bottom: 5%;
+        border-radius: var(--rounded-min);
+        border: var(--border-thickness-min) solid var(--fore-two);
+    }
+
+    .hanzi-review-answer-bar input {
+        font-size: 20px;
+        width: 100%;
+        flex: 1;
+        min-height: 70px;
+    }
+
+    .hanzi-review-answer-bar {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hanzi-review-wrapper {
+        min-height: 35vh;
+    }
+
+    .hanzi-review-word-bank-div {
+        margin-bottom: 10%;
+    }
+
+    .hanzi-review-answer-bar-text {
+        margin: 5% 0;
+        flex: 1;
+        width: 100%;
+    }
+
+    .hanzi-review-answer-bar-text p {
+        width: 100%;
+        text-align: center;
+    }
+}

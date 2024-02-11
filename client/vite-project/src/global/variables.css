@@ -57,22 +57,10 @@
 
 @font-face {
     font-family: 'Caligraphy';
-    src: url(../assets/fonts/Caligraphy/caligraphy.ttf);
+    src: url('../assets/fonts/Caligraphy/caligraphy.ttf');
 }
 
 :root {
-    --gray-full: #0e0e10;
-    --gray-med: #18181b;
-    --gray-min: #1f1f23;
-    --white-full: #f0f0f0;
-    --white-med: #f2f3f499;
-    --white-min: #f2f3f461;
-    --brand-one: #0366ca;
-    --brand-two: #023d80;
-    --confirmation-green: #4caf50;
-    --error-red: #d32f2f;
-    --hyper-link: #0077b6;
-
     --rounded-max: 3px;
     --rounded-min: 0px;
 
@@ -101,16 +89,16 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--white-full);
+    background-color: var(--fore-one);
     border-radius: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: var(--gray-full);
+    background-color: var(--back-one);
 }
 
 ::selection {
-    background: var(--brand-one);
+    background: var(--acc-one);
 }
 
 @keyframes redFireColorAnimation {

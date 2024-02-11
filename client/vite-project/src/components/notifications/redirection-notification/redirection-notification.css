@@ -1,0 +1,73 @@
+@import url('../../../global/variables.css');
+
+.black-out-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.redirection-notification-wrapper {
+    width: 20%;
+    min-width: 300px;
+    height: auto;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius: var(--rounded-max);
+    color: var(--fore-one);
+    border: var(--border-thickness-min) solid var(--fore-one);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    background-color: var(--back-three);
+}
+
+.notification-bar {
+    height: 2px;
+    background-color: var(--fore-two);
+    width: 100%;
+    border: none;
+    margin-bottom: 0;
+}
+
+.redirection-notification-wrapper h1 {
+    padding: 0% 10%;
+    margin-bottom: 0;
+    margin-top: 2%;
+}
+
+.redirection-notification-wrapper p {
+    padding: 0% 10%;
+    margin: 3% 0%;
+}
+
+.redirection-notification-wrapper button {
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.redirection-practice-desc {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 5% 0% 2% 0px;
+}
+
+.button-18-disabled {
+    background-color: var(--acc-two) !important;
+    cursor: default !important;
+}
+
+.redirection-space {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}

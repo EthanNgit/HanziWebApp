@@ -1,0 +1,40 @@
+.page-not-found-content {
+    margin-top: 50vh;
+    text-align: center;
+    font-family: 'Roboto';
+}
+
+.page-not-found-header {
+    font-size: 45px;
+}
+
+.page-not-found-description {
+    font-size: 20px;
+}
+
+.page-not-found-link {
+    font-size: 18px;
+    text-decoration: none;
+    color: var(--acc-one);
+}
+
+.page-not-found-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .page-not-found-content {
+        margin-top: 45vh;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    .page-not-found-header {
+        font-size: 25px;
+    }
+    .page-not-found-description {
+        font-size: 15px;
+    }
+    .page-not-found-link {
+        font-size: 15px;
+    }
+}
