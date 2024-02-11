@@ -1,6 +1,6 @@
 # Hanzi Learning Web App
 Full Stack React Web Application for Teaching Hanzi.
-> Current version: V: 0.3.5 Bug fixes, optimization, code formatting
+> Current version: V: 0.4.0 File reformatting, bug fixes, settings, themes, practice options
 
 ## About
 This Application was for me to study hanzi more as well as provide a way for people to learn easier than I did. It has a personal database that can be used as an api as a dictionary that includes all sorts of metrics such as simplified and traditional hanzi, the stroke counts for each, the definition, the pinyin, hsk level, and category the word falls under. There is a learn section to go over new vocabulary over time using SRS method (spaced repetition). Then You can review previous vocabulary through multiple trials. You can quiz stroke order, definitions, sounds, etc. The apps dictionary is full and has example usages for every entree, all of this makes this Hanzi web app unique and powerful.
@@ -26,19 +26,20 @@ This Application was for me to study hanzi more as well as provide a way for peo
  </details>
  <details><summary>V3</summary>
   <ul>
-  </ul>
- </details>
- <details><summary>V2</summary>
-  <ul>
-  </ul>
- </details>
- <details><summary>V1</summary>
-  <ul>
+    <li>V: 0.3.5 Bug fixes, optimization, code formatting</li>
     <li>V: 0.3.4 Ui changes, new review methods</li>
     <li>V: 0.3.3 Bug fixes, ui cleanup, ui qol, story system</li>
     <li> V: 0.3.2 Bug fixes, ui changes, code cleanup.</li>
     <li> V: 0.3.1 Practice Page, bug fixes, optimization on queries and load times, new theme, strings are now localized.</li>
+  </ul>
+ </details>
+ <details><summary>V2</summary>
+  <ul>
     <li> V: 0.2.1 SRS start and reviewing, bug fixing</li> 
+  </ul>
+ </details>
+ <details><summary>V1</summary>
+  <ul>
     <li> V: 0.1.1 Learn Page ui</li>
     <li> V: 0.1 Base Update and dictionary api (personal)...</li>
   </ul>
