@@ -16,7 +16,6 @@ This Application was for me to study hanzi more as well as provide a way for peo
 <details><summary>Home and account</summary>
   <img src="https://github.com/EthanNgit/HanziWebApp/assets/105979510/b27cf035-9625-47ec-a194-ce28fb46d3dc">
   <img src="https://github.com/EthanNgit/HanziWebApp/assets/105979510/226a0c30-7fea-417d-af1c-0be9a6b45bfb">
-  <img src="https://github.com/EthanNgit/HanziWebApp/assets/105979510/b27cf035-9625-47ec-a194-ce28fb46d3dc">
   <img src="https://github.com/EthanNgit/HanziWebApp/assets/105979510/2975e168-704c-4a7c-8c49-61f63e737bec">
 </details>
 <details><summary>Learn page</summary>
