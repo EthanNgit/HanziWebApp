@@ -13,8 +13,39 @@ This Application was for me to study hanzi more as well as provide a way for peo
   <img src="https://github.com/EthanNgit/EthanNgit/assets/105979510/99985008-ff10-40da-b45b-9db73f33b1e3" width="25">
 
 ## Walkthrough
-> TBC
-![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/f033511d-6731-4251-8c30-1c63ef0a16e5)
+<details><summary>Home and account</summary>
+  ![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/b27cf035-9625-47ec-a194-ce28fb46d3dc)
+  ![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/226a0c30-7fea-417d-af1c-0be9a6b45bfb)
+  ![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/2975e168-704c-4a7c-8c49-61f63e737bec)
+</details>
+<details><summary>Learn page</summary>
+  ![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/08399219-c547-4c88-b341-7cdef9343f3f)
+  ![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/6979d6ca-0959-46a6-857a-38428ea50be7)
+  ![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/6549dd9a-23ce-4e7c-bb41-63cdf7d6b61e)
+  ![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/80482475-523a-43bb-9cc3-3af2baaee92f)
+</details>
+<details><summary>Practice page</summary>
+  ![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/db8adb39-ac4e-49b9-a814-92cfd1587db1)
+  ![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/864027a2-be1c-4fd5-8c9e-64837e532541)
+  ![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/5d58dab2-3434-41bc-8a04-bde536d4c0ec)
+  ![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/4f6544dd-f28b-4824-b320-9b1c23afa243)
+  ![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/834b63f8-9fbe-44ca-ac99-58214f678d36)
+  ![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/6dd888a8-c18d-4b22-a884-1c1b648dd7f3)
+</details>
+<details><summary>Settings page</summary>
+  ![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/8d4da92d-5e4e-45a8-9345-e77435d6fcac)
+  ![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/9ed5f5c4-dae6-49ac-9c65-eae8bfca42a9)
+  ![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/1ebff18a-6fda-4a1c-8f7b-a1c47cac1f34)
+  ![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/05d6db16-396c-4c93-b31a-4caef650bbc5)
+  ![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/96fdef19-e575-4d97-b5e1-bdf6da7afbfd)
+</details>
+<details><summary>Search page</summary>
+  ![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/90413e5e-87af-46fe-b5e2-1779ac3e734b)
+  ![image](https://github.com/EthanNgit/HanziWebApp/assets/105979510/c57e9365-695e-4513-870c-6beb2fa7fa4f)
+
+</details>
+
+
 
 ## Past versions
 > Documentation of each git release is contained and stored.
@@ -79,25 +110,8 @@ This Application was for me to study hanzi more as well as provide a way for peo
     <li> Start practice systems</li>
   </ul>
  </details>
- <details><summary>V4</summary>
-  <ul>
-  </ul>
- </details>
- <details><summary>V5</summary>
-  <ul>
-  </ul>
- </details>
- <details><summary>Potential plans</summary>
-  <ul>
-  </ul>
- </details>
-  <details><summary>Passive plans</summary>
-  <ul>
- </details>
 </details>
 
-## Resources
-> I would not of been able to get so far without the thanks of these.
   
 
 
